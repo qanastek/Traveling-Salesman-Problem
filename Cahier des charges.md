@@ -1,0 +1,49 @@
+# Cahier des charges
+
+- [ ] Partie 1
+  - [ ] Le déroulement de l’algorithme doit être affiché à l'écran
+    - [ ] GraphStream
+  - [ ] L'information dois être comprise par un humain :
+    - [ ] Réglage via un slider de la vitesse
+  - [ ] L'utilisateur doit pouvoir facilement proposer un TSP qu’il souhaite résoudre
+    - [ ] Faire la méthode **static** de chargement
+    - [ ] Load via CSV
+    - [ ] Load via Table Insertion
+  - [ ] Intéraction avec le TSP
+    - [ ] Lancer
+    - [ ] Pause
+    - [ ] Continuer
+    - [ ] Stop
+    - [ ] Reset / Restart
+  - [ ] Diagramme de classe
+  - [ ] Adaptez vous au contexte (enfants) dans vos choix d'éléments, de textes, d'images.
+    - [ ] Maquette Wireframe
+    - [ ] Maquette Mockup
+    - [ ] Ajouter des commentaires fonctionnement ou/et des animations Adobe XD
+- [ ] Partie 2
+  - [ ] Etape 1: Faire une simple interface:
+    - [ ] 1 graphe: afficher une liste de points
+    - [ ] 1 bouton
+      - [ ] Qui lance l'algorithme
+  - [ ] Etape 2: Importer TSPModel PtiDeb.jar
+    - [ ] TSPModel PtiDeb extends java.util.Observable
+      - [ ] votre interface doit "implements" l’interface java.util.Observer
+      - [ ] Votre interface doit être renseignée en paramètre du construction du model.
+      - [ ] Le constructeur du modèle enregistrera votre vue en temps qu’observateur.
+      - [ ]  Cela aura pour conséquence de lancer la fonction "update()" des "Observer" (votre vue), que vous devrez @Override et implémenter.
+        - [ ] ajouts de segment
+        - [ ] suppression de segment
+        - [ ] Update the graph view
+          - [ ] notifyObserver
+          - [ ] TSPModel PtiDeb.java et Page 7
+      - [ ] Faire tourner dans un Thread et le run avec .start()
+        - [ ] TSPModel PtiDeb est une "Runnable"
+          - [ ] .run() permet de lancer la recherche TSP
+      - [ ] Segment
+        - [ ] identifiant (auto)
+        - [ ] Point
+          - [ ] identifiant (unique)
+          - [ ] x / y : Integer
+        - [ ] L'Edge (UI object) ce vera attribuer l'identifiant du segment à sa création et destruction
+  - [ ] Troisième partie - Autres fonctionnalités principales
+    - [ ] 

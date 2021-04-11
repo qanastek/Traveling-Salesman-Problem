@@ -1,0 +1,17 @@
+@startuml ClassesOverview
+top to bottom direction
+
+class A {
+    - x: Double
+    - y: Double
+}
+
+A --> B
+
+B -- C
+note left
+Test
+end note
+
+
+@endmindmap
