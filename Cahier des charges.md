@@ -11,8 +11,8 @@
     - [ ] Load via Table Insertion
   - [ ] Intéraction avec le TSP
     - [ ] Lancer
-    - [ ] Pause
-    - [ ] Continuer
+      - [ ] Pause
+      - [ ] Continuer
     - [ ] Stop
     - [ ] Reset / Restart
   - [ ] Diagramme de classe
@@ -22,8 +22,8 @@
     - [ ] Ajouter des commentaires fonctionnement ou/et des animations Adobe XD
 - [ ] Partie 2
   - [ ] Etape 1: Faire une simple interface:
-    - [ ] 1 graphe: afficher une liste de points
-    - [ ] 1 bouton
+    - [ ] 1 Graphe: afficher une liste de points
+    - [ ] 1 Bouton
       - [ ] Qui lance l'algorithme
   - [ ] Etape 2: Importer TSPModel PtiDeb.jar
     - [ ] TSPModel PtiDeb extends java.util.Observable
