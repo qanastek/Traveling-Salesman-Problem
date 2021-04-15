@@ -28,7 +28,7 @@ import org.graphstream.graph.implementations.*;
 public class FXMLDocumentController implements Initializable, Observer {
     
     // Graph
-    Graph graph = new SingleGraph("Tutorial 1");
+    Graph graph = new SingleGraph("TSP");
     
     // TSP Model
     TSPModel_PtiDeb tsp = new TSPModel_PtiDeb(this);
@@ -42,7 +42,7 @@ public class FXMLDocumentController implements Initializable, Observer {
         System.out.println("-------------------------- test new");
         // runTSP();
         // updateGraph();
-        // csvParser();
+        csvParser();
     }
     
     private void csvParser() {
