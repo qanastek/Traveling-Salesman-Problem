@@ -46,4 +46,10 @@
           - [ ] x / y : Integer
         - [ ] L'Edge (UI object) ce vera attribuer l'identifiant du segment à sa création et destruction
   - [ ] Troisième partie - Autres fonctionnalités principales
-    - [ ] 
+
+
+
+  - [ ] L'interface table ajouter le multichoix afin de delete
+    - [ ] Ajouter cette interface apres le loading CSV pour permettre l'édit
+  - [ ] Ecran d'accueil avec les options de load
+  - [ ] Charger des models pre-conçus de cartes comme la france
