@@ -9,17 +9,19 @@
     - [ ] Faire la méthode **static** de chargement
     - [ ] Load via CSV
     - [ ] Load via Table Insertion
+  - [x] MVC
   - [ ] Intéraction avec le TSP
-    - [ ] Lancer
+    - [x] Lancer
       - [ ] Pause
       - [ ] Continuer
     - [ ] Stop
     - [ ] Reset / Restart
   - [ ] Diagramme de classe
   - [ ] Adaptez vous au contexte (enfants) dans vos choix d'éléments, de textes, d'images.
-    - [ ] Maquette Wireframe
-    - [ ] Maquette Mockup
+    - [x] Maquette Wireframe
+    - [x] Maquette Mockup
     - [ ] Ajouter des commentaires fonctionnement ou/et des animations Adobe XD
+
 - [ ] Partie 2
   - [ ] Etape 1: Faire une simple interface:
     - [ ] 1 Graphe: afficher une liste de points

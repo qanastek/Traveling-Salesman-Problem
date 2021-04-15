@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app;
+package app.Controller;
 
 import TSPModel_PtiDeb.*;
+import app.Models.CSVParser;
+import app.Models.NodeCoordinates;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
@@ -24,8 +27,10 @@ import org.graphstream.graph.implementations.*;
  */
 public class FXMLDocumentController implements Initializable, Observer {
     
+    // Graph
     Graph graph = new SingleGraph("Tutorial 1");
     
+    // TSP Model
     TSPModel_PtiDeb tsp = new TSPModel_PtiDeb(this);
     
     @FXML
@@ -33,8 +38,23 @@ public class FXMLDocumentController implements Initializable, Observer {
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        runTSP();
-        updateGraph();
+        
+        System.out.println("-------------------------- test new");
+        // runTSP();
+        // updateGraph();
+        // csvParser();
+    }
+    
+    private void csvParser() {
+
+        String path = "C:\\Users\\yanis\\Desktop\\Cours\\Master\\M1\\S2\\Interface Graphique\\TPs\\TP2\\Test\\";
+        
+        String pathIn = path + "France.csv";
+        String pathOut = path + "France.out.csv";
+        
+        ArrayList<NodeCoordinates> nodes = CSVParser.readFile(pathIn,",");
+        
+        CSVParser.writeFile(nodes, pathOut, ",");        
     }
     
     private void runTSP() {
