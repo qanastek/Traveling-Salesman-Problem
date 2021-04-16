@@ -7,7 +7,10 @@ package app.Controller;
 
 import TSPModel_PtiDeb.*;
 import app.Models.CSVParser;
+import app.Models.CSVParserEdges;
+import app.Models.EdgeCoordinates;
 import app.Models.NodeCoordinates;
+import app.Models.Toolbox;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -33,6 +36,9 @@ public class FXMLDocumentController implements Initializable, Observer {
     // TSP Model
     TSPModel_PtiDeb tsp = new TSPModel_PtiDeb(this);
     
+    ArrayList<NodeCoordinates> nodes;
+    ArrayList<EdgeCoordinates> edges;
+    
     @FXML
     private Label label;
     
@@ -40,29 +46,44 @@ public class FXMLDocumentController implements Initializable, Observer {
     private void handleButtonAction(ActionEvent event) {
         
         System.out.println("-------------------------- test new");
-        // runTSP();
-        // updateGraph();
         csvParser();
+        // save();
+        runTSP(nodes);
+        renderGraph();
+//        updateGraph();
     }
     
     private void csvParser() {
-
-        String path = "C:\\Users\\yanis\\Desktop\\Cours\\Master\\M1\\S2\\Interface Graphique\\TPs\\TP2\\Test\\";
         
-        String pathIn = path + "France.csv";
-        String pathOut = path + "France.out.csv";
+        System.out.println("Read PATH_NODES_IN");
+        this.nodes = CSVParser.readFile(Toolbox.PATH_NODES_IN,",");   
         
-        ArrayList<NodeCoordinates> nodes = CSVParser.readFile(pathIn,",");
+        System.out.println("Read PATH_EDGES_IN");   
+        this.edges = CSVParserEdges.readFile(Toolbox.PATH_EDGES_IN,",");
         
-        CSVParser.writeFile(nodes, pathOut, ",");        
+        System.out.println("All Loaded!");   
     }
     
-    private void runTSP() {
+    private void save() {
+        CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
+        CSVParserEdges.writeFile(edges, Toolbox.PATH_EDGES_OUT, ",");
+    }
+    
+    private void runTSP(ArrayList<NodeCoordinates> nodes) {
         
-        tsp.addPoint(1, 1, 1);
-        tsp.addPoint(2, 2, 2);
-        tsp.addPoint(3, 3, 3);
-        tsp.addPoint(4, 4, 4);
+        for(NodeCoordinates node : nodes) {
+            
+            tsp.addPoint(
+                node.getIdentifier(),
+                node.getX(),
+                node.getY()
+            );
+            
+            System.out.println(node);
+            System.out.println("aaaa");
+        }
+        
+        System.out.println("-----------------------------");
         
         tsp.run();
         
@@ -94,23 +115,65 @@ public class FXMLDocumentController implements Initializable, Observer {
         }
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    private void renderGraph() {
         
         graph.setStrict(false);
         graph.setAutoCreate( true );
         
-        graph.addNode("A" );
-        graph.addNode("B" );
-        graph.addNode("C" );
+        // Build Nodes
+        for(NodeCoordinates node : nodes) {
+            
+            System.out.println(node);
+            System.out.println(node.getName());
+            
+            graph.addNode(
+                node.getName()
+            );
+        }
         
-        graph.addEdge("AB", "A", "B");
-        graph.addEdge("BC", "B", "C");
-        graph.addEdge("CA", "C", "A");
+        System.out.println("*****************************");
+//        System.out.println(edges);
+        
+        // Build Edges
+        for(EdgeCoordinates edge : edges) {
+            
+            System.out.println(edge);
+            
+            String name = edge.getName();
+            int from = edge.getFrom();
+            int to = edge.getTo();
+            
+            System.out.println(name);
+            System.out.println(from);
+            System.out.println(to);
+            
+            System.out.println("/*/*/");
+            
+            Edge AB = graph.getEdge(name);
+            Node A = graph.getNode(from);
+            Node B = graph.getNode(to);
+            
+            System.out.println(AB);
+            System.out.println(A);
+            System.out.println(B);
+            
+            System.out.println("/*/*/");
+            
+            // TODO: Issue with last line if contains 213
+            graph.addEdge(
+                name,
+                from,
+                to
+            );
+        }
         
         System.setProperty("org.graphstream.ui", "swing"); 
         
         graph.display();
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
     }    
 
     @Override

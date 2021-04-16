@@ -9,16 +9,16 @@ package app.Models;
  *
  * @author yanis
  */
-public class NodeCoordinates implements CSVParsable {
+public class EdgeCoordinates implements CSVParsable {
     
     private int identifier;
-    private int x;
-    private int y;
+    private int from;
+    private int to;
 
-    public NodeCoordinates(int identifier, int x, int y) {
+    public EdgeCoordinates(int identifier, int from, int to) {
         this.identifier = identifier;
-        this.x = x;
-        this.y = y;
+        this.from = from;
+        this.to = to;
     }
 
     public String getName() {
@@ -33,33 +33,33 @@ public class NodeCoordinates implements CSVParsable {
         this.identifier = identifier;
     }
 
-    public int getX() {
-        return x;
+    public int getFrom() {
+        return from;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setFrom(int from) {
+        this.from = from;
     }
 
-    public int getY() {
-        return y;
+    public int getTo() {
+        return to;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setTo(int to) {
+        this.to = to;
     }
     
     public String toCSV(String sep) {
-        return this.identifier + sep + this.x + sep + this.y;
+        return this.identifier + sep + this.from + sep + this.to;
     }
     
     public String toCSV() {
         return this.toCSV(",");
     }
-        
+    
     @Override
     public String getCSVHeader(String sep) {
-        return "identifier" + sep + "x" + sep + "y";
+        return "identifier" + sep + "from" + sep + "to";
     }
         
     @Override

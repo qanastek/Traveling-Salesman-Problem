@@ -16,13 +16,13 @@ import java.util.ArrayList;
  *
  * @author yanis
  */
-public class CSVParser {
+public class CSVParserEdges {
     
-    public static ArrayList<NodeCoordinates> readFile(String path, String sep) {
+    public static ArrayList<EdgeCoordinates> readFile(String path, String sep) {
         
         File file = new File(path);
 
-        ArrayList<NodeCoordinates> result = new ArrayList();
+        ArrayList<EdgeCoordinates> result = new ArrayList();
 
         try {
             
@@ -37,7 +37,7 @@ public class CSVParser {
                 String[] splitted = line.split(sep);
                 
                 result.add(
-                    new NodeCoordinates(
+                    new EdgeCoordinates(
                         Integer.parseInt(splitted[0]),
                         Integer.parseInt(splitted[1]),
                         Integer.parseInt(splitted[2])
@@ -55,7 +55,7 @@ public class CSVParser {
         return result;
     }
     
-    public static void writeFile(ArrayList<NodeCoordinates> items, String path, String sep) {
+    public static void writeFile(ArrayList<EdgeCoordinates> items, String path, String sep) {
         
         try {
             
@@ -73,7 +73,7 @@ public class CSVParser {
             output.write(items.get(0).getCSVHeader(sep) + "\n");
             
             // Write each Nodes
-            for (NodeCoordinates item : items) {
+            for (EdgeCoordinates item : items) {
                 
                 String csv = item.toCSV() + "\n";
                 
