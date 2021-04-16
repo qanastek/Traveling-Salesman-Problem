@@ -50,6 +50,9 @@
   - [ ] Troisième partie - Autres fonctionnalités principales
 
 
+  - [ ] Graphe Complet
+  - [ ] Table Like Saisie
+  - [ ] Mettre les icones Town / City sur les villes
 
   - [ ] L'interface table ajouter le multichoix afin de delete
     - [ ] Ajouter cette interface apres le loading CSV pour permettre l'édit

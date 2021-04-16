@@ -9,12 +9,6 @@ for rep in range(3):
         nodesFrom.append(i)
         nodesEnd.append(i)
 
-out = open("France.nodes.csv", "w")
-out.write("identifiant,x,y\n")
-for n in nodesFrom:
-    f.write("{},{},{}\n".format(n,n,n))
-f.close()
-
 random.shuffle(nodesFrom)
 random.shuffle(nodesFrom)
 
@@ -23,15 +17,20 @@ random.shuffle(nodesEnd)
 
 cpt = 0
 
+used = []
+
 ed = open("France.edges.csv", "w")
 ed.write("identifiant,from,to\n")
-while(cpt < 20):
+while(cpt < 5):
 
     f = random.choice(nodesFrom)
     t = random.choice(nodesEnd)
 
     if f == t:
         continue
+
+    used.append(f)
+    used.append(t)
 
     nodesFrom.remove(f)
     nodesEnd.remove(t)
@@ -41,6 +40,15 @@ while(cpt < 20):
     cpt += 1
 
 ed.close()
+
+used = list(set(used))
+used.sort()
+
+out = open("France.nodes.csv", "w")
+out.write("identifiant,x,y\n")
+for n in used:
+    out.write("{},{},{}\n".format(n,n,n))
+out.close()
 
 print("Length of from: " + str(len(nodesFrom)))
 print("Length of end: " + str(len(nodesEnd)))

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,14 +31,17 @@ import org.graphstream.graph.implementations.*;
  */
 public class FXMLDocumentController implements Initializable, Observer {
     
+    private static final String ACTIVE = "fill-color: rgb(101, 156, 19);";
+    private static final String BASE = "fill-color: rgb(144, 148, 138);";
+
     // Graph
     Graph graph = new SingleGraph("TSP");
     
     // TSP Model
     TSPModel_PtiDeb tsp = new TSPModel_PtiDeb(this);
     
-    ArrayList<NodeCoordinates> nodes;
-    ArrayList<EdgeCoordinates> edges;
+    ArrayList<NodeCoordinates> nodes = new ArrayList<NodeCoordinates>();
+    ArrayList<EdgeCoordinates> edges = new ArrayList<EdgeCoordinates>();
     
     @FXML
     private Label label;
@@ -48,25 +52,44 @@ public class FXMLDocumentController implements Initializable, Observer {
         System.out.println("-------------------------- test new");
         csvParser();
         // save();
-        runTSP(nodes);
         renderGraph();
-//        updateGraph();
+        runTSP(nodes);
     }
     
     private void csvParser() {
         
         System.out.println("Read PATH_NODES_IN");
         this.nodes = CSVParser.readFile(Toolbox.PATH_NODES_IN,",");   
-        
-        System.out.println("Read PATH_EDGES_IN");   
-        this.edges = CSVParserEdges.readFile(Toolbox.PATH_EDGES_IN,",");
+
+        generateEdges();
         
         System.out.println("All Loaded!");   
     }
     
+    private void generateEdges() {
+        
+        int from;
+        int to;
+        
+        for (NodeCoordinates f : nodes) {
+            
+            from = f.getIdentifier();            
+            
+            for (NodeCoordinates t : nodes) {
+                
+                to = t.getIdentifier();
+                
+                this.edges.add(new EdgeCoordinates(
+                    Toolbox.fromTo(from,to),
+                    from,
+                    to
+                ));
+            }
+        }
+    }
+    
     private void save() {
         CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
-        CSVParserEdges.writeFile(edges, Toolbox.PATH_EDGES_OUT, ",");
     }
     
     private void runTSP(ArrayList<NodeCoordinates> nodes) {
@@ -93,42 +116,65 @@ public class FXMLDocumentController implements Initializable, Observer {
         System.out.println("-----------");
     }
     
-    private void updateGraph() {
+    private void updateGraph(TSPModel_PtiDeb.ActionType action, int from, int to) {
         
-        // https://graphstream-project.org/doc/Tutorials/Getting-Started/
+        System.out.println("- START -");
         
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        System.out.println(from);
+        System.out.println(to);
         
-        System.out.println("-----------");
-        
-        Node A = graph.getNode("A");
-        Edge AB = graph.getEdge("AB");
-        
-        System.out.println(A.getId());
-        System.out.println(AB.getId());
-        
-        System.out.println("-----------");
+        System.out.println("identifier");
+        String identifier = String.valueOf(from) + String.valueOf(to);
+        System.out.println(identifier);
 
-        for(Node n:graph) {
-            System.out.println(n.getId());
+        System.out.println("- FETCH -");
+        
+        Edge AB = graph.getEdge(identifier);
+        System.out.println(AB);
+
+        Node A = graph.getNode(from);     
+        System.out.println(A);
+
+        Node B = graph.getNode(to);
+        System.out.println(B);
+        
+        System.out.println("- END FETCH -");
+
+        if(action == TSPModel_PtiDeb.ActionType.Remove) {
+//            AB.setAttribute("ui.style", BASE);
+            A.setAttribute("ui.style", BASE);
+            B.setAttribute("ui.style", BASE);
         }
+        else {
+//            AB.setAttribute("ui.style", ACTIVE);
+            A.setAttribute("ui.style", ACTIVE);
+            B.setAttribute("ui.style", ACTIVE);
+        }
+                
+        System.out.println("- END UPDATE -");
     }
     
     private void renderGraph() {
         
         graph.setStrict(false);
-        graph.setAutoCreate( true );
-        
+        graph.setAutoCreate(true);
+        graph.addAttribute("ui.quality");
+        graph.addAttribute("ui.antialias");
+        graph.setAttribute("ui.stylesheet", "url('C:\\Users\\yanis\\Desktop\\Cours\\Master\\M1\\S2\\Interface Graphique\\TPs\\TP2\\APP\\src\\app\\Vues\\stylesheet.css')");
+
         // Build Nodes
         for(NodeCoordinates node : nodes) {
             
             System.out.println(node);
             System.out.println(node.getName());
             
-            graph.addNode(
+            Node n = graph.addNode(
                 node.getName()
             );
+            
+            n.setAttribute("ui.style", BASE);
+//            n.setAttribute("fill-mode", "image-scaled");
+//            n.setAttribute("fill-image", "url('https://img.icons8.com/bubbles/2x/city.png');");
         }
         
         System.out.println("*****************************");
@@ -149,22 +195,14 @@ public class FXMLDocumentController implements Initializable, Observer {
             
             System.out.println("/*/*/");
             
-            Edge AB = graph.getEdge(name);
-            Node A = graph.getNode(from);
-            Node B = graph.getNode(to);
-            
-            System.out.println(AB);
-            System.out.println(A);
-            System.out.println(B);
-            
-            System.out.println("/*/*/");
-            
             // TODO: Issue with last line if contains 213
-            graph.addEdge(
+            Edge e = graph.addEdge(
                 name,
                 from,
                 to
             );
+            
+//            e.setAttribute("ui.style", BASE);
         }
         
         System.setProperty("org.graphstream.ui", "swing"); 
@@ -178,13 +216,36 @@ public class FXMLDocumentController implements Initializable, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+
         System.out.println("-------------------------------------------------------");
-        System.out.println("getAction: " + tsp.getAction());
-        System.out.println("getDistanceTotale: " + tsp.getDistanceTotale());
-        System.out.println("getSegmentDistance: " + tsp.getSegmentDistance());
-        System.out.println("getSegmentID: " + tsp.getSegmentID());
-        System.out.println("getSegmentP1: " + tsp.getSegmentP1());
-        System.out.println("getSegmentP2: " + tsp.getSegmentP2());
+
+        TSPModel_PtiDeb.ActionType action = tsp.getAction();
+        System.out.println("getAction: " + action);
+                
+        int identifierID = tsp.getSegmentID();
+        int identifierP1 = tsp.getSegmentP1();
+        int identifierP2 = tsp.getSegmentP2();
+        
+        System.out.println("---");
+        
+        if(action == TSPModel_PtiDeb.ActionType.Finish) {
+            System.out.println("Finished");
+            System.out.println("getDistanceTotale: " + tsp.getDistanceTotale());
+            System.out.println("getSegmentDistance: " + tsp.getSegmentDistance());  
+            return;
+        }
+        else {
+               
+            try {
+                tsp.setPause(true);
+                TimeUnit.MILLISECONDS.sleep(1000);
+                tsp.setPause(false);
+                updateGraph(action, identifierP1, identifierP2);
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        
         System.out.println("-------------------------------------------------------");
     }    
 }
