@@ -56,6 +56,11 @@ public class FXMLDocumentController implements Initializable, Observer {
         runTSP(nodes);
     }
     
+    @FXML
+    private void handlePaneClick() {
+        System.out.println("-------------------------- Pane Click");
+    }
+    
     private void csvParser() {
         
         System.out.println("Read PATH_NODES_IN");
