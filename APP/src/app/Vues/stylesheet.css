@@ -1,16 +1,29 @@
 graph { fill-color: white; }
 node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/2x/city.png'); }
 
+@font-face {
+    font-family: 'AlloyInk';
+    src: url('AlloyInk-nRLyO.ttf');
+}
+
 .background_tile {
     -fx-background-image: url("Icons/background_tile.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 200px;
+    -fx-background-size: cover;
+/*    -fx-width: 200px; 
+    -fx-height: 200px;*/
 }
 
 .background_tile_filled {
     -fx-background-image: url("Icons/background_tile_filled.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 200px;
+    -fx-background-size: cover;
+/*    -fx-width: 200px; 
+    -fx-height: 200px;*/
+}
+
+.test {
+    -fx-font-family: 'AlloyInk';
 }

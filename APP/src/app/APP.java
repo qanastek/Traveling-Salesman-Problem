@@ -19,7 +19,9 @@ public class APP extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Vues/FXMLDocument.fxml"));
+        
+        Parent root = FXMLLoader.load(getClass().getResource("Vues/Home.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("Vues/FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         
