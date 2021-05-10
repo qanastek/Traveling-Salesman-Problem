@@ -5,6 +5,8 @@
  */
 package app.Models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yanis
@@ -20,8 +22,16 @@ public class Toolbox {
     public static final String CLASS_GRID_ITEM = "background_tile";
     public static final String CLASS_GRID_ITEM_FILLED = "background_tile_filled";
     
+    public static int GENERATED_ID = 0;
     
     public static int fromTo(int from, int to) {
         return Integer.parseInt("1" + String.valueOf(from) + String.valueOf(to));
+    }    
+    
+    // Save the nodes into a csv file
+    public static void save(ArrayList<NodeCoordinates> nodes) {
+        System.out.println("Start saving...");
+        CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
+        System.out.println("Saved!");
     }
 }

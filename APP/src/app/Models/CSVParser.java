@@ -61,7 +61,7 @@ public class CSVParser {
             
             // Check if created
             if (new File(path).createNewFile()) {
-              System.out.println("File created!");
+              System.out.println("File created at " + path + " !");
             } else {
               System.out.println("File already exists.");
             }

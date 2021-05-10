@@ -65,7 +65,7 @@ public class FXMLDocumentController implements Initializable, Observer {
         
         System.out.println("-------------------------- test new");
         csvParser();
-        // save();
+        // Toolbox.save(nodes);
         renderGraph();
         runTSP(nodes);
     }
@@ -105,10 +105,6 @@ public class FXMLDocumentController implements Initializable, Observer {
                 ));
             }
         }
-    }
-    
-    private void save() {
-        CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
     }
     
     private void runTSP(ArrayList<NodeCoordinates> nodes) {

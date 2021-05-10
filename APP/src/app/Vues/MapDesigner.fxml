@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Vues.MapDesignerController">
+<AnchorPane id="AnchorPane" fx:id="ap" minHeight="720.0" minWidth="720.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Vues.MapDesignerController">
     <stylesheets>
         <URL value="@stylesheet.css" />
     </stylesheets>
@@ -23,7 +23,7 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Button fx:id="deleteBtn" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #FF0000;" text="DELETE ALL" textFill="RED" HBox.hgrow="ALWAYS">
+                  <Button fx:id="deleteBtn" alignment="CENTER" mnemonicParsing="false" onAction="#deleteAll" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #FF0000;" text="DELETE ALL" textFill="RED" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font></Button>
@@ -59,7 +59,7 @@
                </children></HBox>
             <HBox alignment="CENTER_RIGHT">
                <children>
-                  <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #8DBF9A;" text="SAVE" textFill="#8dbf9a">
+                  <Button fx:id="saveBtn" alignment="CENTER" mnemonicParsing="false" onAction="#save" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #8DBF9A;" text="SAVE" textFill="#8dbf9a">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

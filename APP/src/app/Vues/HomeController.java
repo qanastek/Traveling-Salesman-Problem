@@ -42,7 +42,11 @@ public class HomeController implements Initializable {
                 
         try {
             
-            AnchorPane root = FXMLLoader.load(getClass().getResource("MapDesigner.fxml"));       
+            AnchorPane root = FXMLLoader.load(getClass().getResource("MapDesigner.fxml"));     
+            ap.setTopAnchor(root,0.0);
+            ap.setBottomAnchor(root,0.0);
+            ap.setLeftAnchor(root,0.0);
+            ap.setRightAnchor(root,0.0);
             ap.getChildren().setAll(root);
             
         } catch (IOException ex) {
