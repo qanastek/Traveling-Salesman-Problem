@@ -7,30 +7,19 @@ package app.Vues;
 
 import TSPModel_PtiDeb.*;
 import app.Models.CSVParser;
-import app.Models.CSVParserEdges;
 import app.Models.EdgeCoordinates;
 import app.Models.NodeCoordinates;
 import app.Models.Toolbox;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
@@ -68,6 +57,16 @@ public class FXMLDocumentController implements Initializable, Observer {
         // Toolbox.save(nodes);
         renderGraph();
         runTSP(nodes);
+    }
+    
+    @FXML
+    private void loadMap() {
+        System.out.println("-------------------------- loadMap");
+    }
+    
+    @FXML
+    private void editMap() {
+        System.out.println("-------------------------- editMap");
     }
     
     @FXML

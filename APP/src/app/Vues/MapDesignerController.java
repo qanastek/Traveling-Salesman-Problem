@@ -8,7 +8,6 @@ package app.Vues;
 import app.Models.CustomEventHandler;
 import app.Models.NodeCoordinates;
 import app.Models.Toolbox;
-import com.sun.javafx.geom.Point2D;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,21 +15,14 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.scene.Node;
 
 /**
@@ -60,8 +52,6 @@ public class MapDesignerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        keepAspectRatio();
-
 //
 //        ap.heightProperty().addListener(new ChangeListener<Object>() {
 //                @Override
@@ -110,23 +100,6 @@ public class MapDesignerController implements Initializable {
         }
     }
     
-    private void keepAspectRatio() {
-        
-//        System.out.println("Keep Aspect Ratio Start");
-//        Stage stage = (Stage) ap.getScene().getWindow();
-//
-//        stage.minWidthProperty().bind(stage.heightProperty());
-//        stage.minHeightProperty().bind(stage.widthProperty());
-//        
-//        stage.maxWidthProperty().bind(stage.heightProperty());
-//        stage.maxHeightProperty().bind(stage.widthProperty());
-//        
-////        stage.prefWidthProperty().bind(stage.heightProperty());
-////        stage.prefHeightProperty().bind(stage.widthProperty());
-//        
-//        System.out.println("Keep Aspect Ratio End");
-    }
-    
     @FXML
     private void save(){
         
@@ -137,6 +110,10 @@ public class MapDesignerController implements Initializable {
         try {
             
             AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));       
+            ap.setTopAnchor(root,0.0);
+            ap.setBottomAnchor(root,0.0);
+            ap.setLeftAnchor(root,0.0);
+            ap.setRightAnchor(root,0.0);
             ap.getChildren().setAll(root);
             
         } catch (IOException ex) {

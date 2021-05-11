@@ -24,6 +24,10 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-height: 200px;*/
 }
 
+.finished {
+    -fx-fill: #3FA838;
+}
+
 .test {
     -fx-font-family: 'AlloyInk';
 }

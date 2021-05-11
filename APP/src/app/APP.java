@@ -17,16 +17,27 @@ import javafx.stage.Stage;
  */
 public class APP extends Application {
     
+    Scene scene;
+    Stage stage;
+    
+    boolean lockWidth = false;
+    boolean lockHeight = false;
+    
     @Override
     public void start(Stage stage) throws Exception {
         
         Parent root = FXMLLoader.load(getClass().getResource("Vues/Home.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("Vues/FXMLDocument.fxml"));
         
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
+        this.stage = stage;
         
         stage.setScene(scene);
+        stage.setWidth(800);
+        stage.setHeight(800);
         stage.show();
+        
+        keepAspectRatio();
     }
 
     /**
@@ -34,6 +45,46 @@ public class APP extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    private void keepAspectRatio() {
+        
+        try {
+
+            System.out.println("Keep Aspect Ratio Start");
+                   
+            stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+
+                lockHeight = true;
+
+                if(lockWidth == true) {
+                    lockWidth = false;
+                    return;
+                }
+                stage.setHeight(stage.widthProperty().doubleValue());
+
+                lockWidth = false;
+           });
+
+           stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+
+                    lockWidth = true;
+
+                    if(lockHeight == true) {
+                        lockHeight = false;
+                        return;
+                    }
+
+                    stage.setWidth(stage.heightProperty().doubleValue());
+
+                    lockHeight = false;
+           });
+
+            System.out.println("Keep Aspect Ratio End");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     
 }
