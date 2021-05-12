@@ -24,37 +24,37 @@
 
 - [ ] Partie 2
   - [ ] Etape 1: Faire une simple interface:
-    - [ ] 1 Graphe: afficher une liste de points
+    - [x] 1 Graphe: afficher une liste de points
     - [ ] 1 Bouton
       - [ ] Qui lance l'algorithme
   - [ ] Etape 2: Importer TSPModel PtiDeb.jar
     - [ ] TSPModel PtiDeb extends java.util.Observable
-      - [ ] votre interface doit "implements" l’interface java.util.Observer
-      - [ ] Votre interface doit être renseignée en paramètre du construction du model.
-      - [ ] Le constructeur du modèle enregistrera votre vue en temps qu’observateur.
-      - [ ]  Cela aura pour conséquence de lancer la fonction "update()" des "Observer" (votre vue), que vous devrez @Override et implémenter.
-        - [ ] ajouts de segment
-        - [ ] suppression de segment
-        - [ ] Update the graph view
-          - [ ] notifyObserver
-          - [ ] TSPModel PtiDeb.java et Page 7
-      - [ ] Faire tourner dans un Thread et le run avec .start()
-        - [ ] TSPModel PtiDeb est une "Runnable"
-          - [ ] .run() permet de lancer la recherche TSP
-      - [ ] Segment
-        - [ ] identifiant (auto)
-        - [ ] Point
-          - [ ] identifiant (unique)
-          - [ ] x / y : Integer
-        - [ ] L'Edge (UI object) ce vera attribuer l'identifiant du segment à sa création et destruction
+      - [x] votre interface doit "implements" l’interface java.util.Observer
+      - [x] Votre interface doit être renseignée en paramètre du construction du model.
+      - [x] Le constructeur du modèle enregistrera votre vue en temps qu’observateur.
+      - [x]  Cela aura pour conséquence de lancer la fonction "update()" des "Observer" (votre vue), que vous devrez @Override et implémenter.
+        - [x] ajouts de segment
+        - [x] suppression de segment
+        - [x] Update the graph view
+          - [x] notifyObserver
+          - [x] TSPModel PtiDeb.java et Page 7
+      - [x] Faire tourner dans un Thread et le run avec .start()
+        - [x] TSPModel PtiDeb est une "Runnable"
+          - [x] .run() permet de lancer la recherche TSP
+      - [x] Segment
+        - [x] identifiant (auto)
+        - [x] Point
+          - [x] identifiant (unique)
+          - [x] x / y : Integer
+        - [x] L'Edge (UI object) ce vera attribuer l'identifiant du segment à sa création et destruction
   - [ ] Troisième partie - Autres fonctionnalités principales
 
+  - [x] Graphe Complet
+  - [x] Table Like Saisie
+  - [x] Map click Saisie
+  - [ ] Mettre les icones Town / City sur les villes du graph
 
-  - [ ] Graphe Complet
-  - [ ] Table Like Saisie
-  - [ ] Mettre les icones Town / City sur les villes
-
-  - [ ] L'interface table ajouter le multichoix afin de delete
-    - [ ] Ajouter cette interface apres le loading CSV pour permettre l'édit
-  - [ ] Ecran d'accueil avec les options de load
-  - [ ] Charger des models pre-conçus de cartes comme la france
+  - [x] L'interface table ajouter le multichoix afin de delete
+    - [x] Ajouter cette interface apres le loading CSV pour permettre l'édit
+  - [x] Ecran d'accueil avec les options de load
+  - [x] Charger des models pre-conçus de cartes comme la france
