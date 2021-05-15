@@ -8,11 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="APP.jar" size="145394" download="eager" />
+    <jar href="APP.jar" size="148530" download="eager" />
     <jar href="lib\TSPModel_PtiDeb.jar" size="28292" download="eager" />
-    <jar href="lib\gs-core-1.3-javadoc.jar" size="2373681" download="eager" />
-    <jar href="lib\gs-core-1.3-sources.jar" size="772235" download="eager" />
-    <jar href="lib\gs-core-1.3.jar" size="992680" download="eager" />
+    <jar href="lib\gs-algo-2.0.jar" size="8108677" download="eager" />
+    <jar href="lib\gs-core-2.0.jar" size="916101" download="eager" />
+    <jar href="lib\gs-ui-javafx-2.0.jar" size="439586" download="eager" />
+    <jar href="lib\gs-ui-swing-2.0.jar" size="428322" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="app.APP"  name="APP" />
   <update check="always"/>

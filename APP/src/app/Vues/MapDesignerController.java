@@ -24,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -103,13 +104,23 @@ public class MapDesignerController implements Initializable {
     @FXML
     private void save(){
         
+        // If empty
+        if(points.values().size() <= 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Aucune ville de posée!");
+            alert.setHeaderText("Aucune ville n'a était posée!");
+            alert.setContentText("Cliquer sur les cadrillage pour poser votre première ville.");
+            alert.showAndWait();
+            return;
+        }
+        
         // Save in the csv file
         ArrayList<NodeCoordinates> values = new ArrayList(points.values());
         Toolbox.save(values);
                 
         try {
             
-            AnchorPane root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));       
+            AnchorPane root = FXMLLoader.load(getClass().getResource("Game.fxml"));       
             ap.setTopAnchor(root,0.0);
             ap.setBottomAnchor(root,0.0);
             ap.setLeftAnchor(root,0.0);

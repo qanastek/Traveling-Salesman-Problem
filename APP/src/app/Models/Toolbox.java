@@ -22,6 +22,21 @@ public class Toolbox {
     public static final String CLASS_GRID_ITEM = "background_tile";
     public static final String CLASS_GRID_ITEM_FILLED = "background_tile_filled";
     
+    // ------------------ STATUS ------------------
+    public static final String RUNNING = "RUNNING";
+    public static final String RUNNING_CSS = "RUNNING_COLOR";
+    
+    public static final String PAUSED = "PAUSED";
+    public static final String PAUSED_CSS = "PAUSED_COLOR";
+    
+    public static final String STOPPED = "STOPPED";
+    public static final String STOPPED_CSS = "STOPPED_COLOR";
+    
+    public static final String FINISHED = "FINISHED";
+    public static final String FINISHED_CSS = "FINISHED_COLOR";
+    
+    public static ArrayList<Thread> THREADS = new ArrayList();
+    
     public static int GENERATED_ID = 0;
     
     public static int fromTo(int from, int to) {

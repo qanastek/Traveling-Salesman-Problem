@@ -24,8 +24,20 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-height: 200px;*/
 }
 
-.finished {
+.FINISHED_COLOR {
     -fx-fill: #3FA838;
+}
+
+.PAUSED_COLOR {
+    -fx-fill: #E7722C;
+}
+
+.STOPPED_COLOR {
+    -fx-fill: #f00c10;
+}
+
+.RUNNING_COLOR {
+    -fx-fill: #8b928a;
 }
 
 .test {

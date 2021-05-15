@@ -5,6 +5,7 @@
  */
 package app;
 
+import app.Models.Toolbox;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,12 +23,24 @@ public class APP extends Application {
     
     boolean lockWidth = false;
     boolean lockHeight = false;
+
+    @Override
+    public void stop() throws Exception {
+        
+        for(Thread t : Toolbox.THREADS) {
+            t.stop();
+        }
+        
+        super.stop();
+    }
     
     @Override
     public void start(Stage stage) throws Exception {
         
+        System.setProperty("org.graphstream.ui", "javafx");
+        
         Parent root = FXMLLoader.load(getClass().getResource("Vues/Home.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("Vues/FXMLDocument.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("Vues/Game.fxml"));
         
         scene = new Scene(root);
         this.stage = stage;

@@ -58,3 +58,27 @@
     - [x] Ajouter cette interface apres le loading CSV pour permettre l'édit
   - [x] Ecran d'accueil avec les options de load
   - [x] Charger des models pre-conçus de cartes comme la france
+
+## TODO
+
+- [ ] Implémenter la vue `load game` de Miora
+- [ ] Buttons
+  - [ ] Start
+  - [ ] Pause
+  - [ ] Reset
+  - [ ] Stop
+- [ ] Donner un nom à la save
+- [ ] Link `Game` avec le map préalablement créer
+  - [ ] Faire que cela marche aussi dans load map, donc passer en param ou load le csv dans la varible static lors du clique sur Save
+- [ ] Proposer `SAVE` et `SAVE & PLAY`
+- [ ] Faire que le réglage avec le `Slider` soit plus simple
+- [ ] Rendre responsive le graph
+- [ ] Implémenter les boutton `load` et `create` dans la vue `Game`
+- [ ] Update la distance total
+- [ ] Update le timer total
+- [ ] Ajouter les flèches dans le sens du `path`
+- [ ] Ajouter les icons de ville dans le `graph`
+- [ ] Changer la couleur de save dans la vue `Map Designer`
+- [ ] Changer les `émojis`
+- [ ] Ajouter le css sur les bouttons de la vue `Game`
+- [ ] Ajouter un icon sur l'application JavaFX
