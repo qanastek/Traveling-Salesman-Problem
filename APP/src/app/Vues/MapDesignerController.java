@@ -25,6 +25,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 
 /**
  * FXML Controller class
@@ -59,6 +62,24 @@ public class MapDesignerController implements Initializable {
 //                public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 //                }			
 //        });
+        
+        // Add Columns
+        for (int i = 0; i < Toolbox.DEFAULT_SIZE; i++) {            
+            ColumnConstraints cc = new ColumnConstraints();
+            cc.setMinWidth(10);
+            cc.setPrefWidth(100);            
+            cc.setHgrow(Priority.SOMETIMES);
+            grid.getColumnConstraints().add(cc);
+        }
+
+        // Add Rows
+        for (int j = 0; j < Toolbox.DEFAULT_SIZE; j++) {          
+            RowConstraints rc = new RowConstraints();
+            rc.setMinHeight(10);
+            rc.setPrefHeight(30);            
+            rc.setVgrow(Priority.SOMETIMES);
+            grid.getRowConstraints().add(rc);
+        }
         
         for (int i = 0; i < Toolbox.DEFAULT_SIZE; i++) {
             
@@ -132,6 +153,25 @@ public class MapDesignerController implements Initializable {
         }
     }  
     
+    @FXML
+    private void back(){
+       
+        System.out.println("back");
+                
+        try {
+            
+            AnchorPane root = FXMLLoader.load(getClass().getResource("Home.fxml"));     
+            ap.setTopAnchor(root,0.0);
+            ap.setBottomAnchor(root,0.0);
+            ap.setLeftAnchor(root,0.0);
+            ap.setRightAnchor(root,0.0);
+            ap.getChildren().setAll(root);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(MapDesignerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
     @FXML
     private void deleteAll(){
         

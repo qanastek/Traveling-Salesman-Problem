@@ -109,8 +109,14 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadMap" text="LOAD MAP" textAlignment="CENTER" />
-                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editMap" text="EDIT MAP" textAlignment="CENTER" GridPane.columnIndex="1" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadMap" styleClass="btnOutlined" text="LOAD MAP" textAlignment="CENTER" textFill="#fd9294">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editMap" styleClass="btnOutlined" text="EDIT MAP" textAlignment="CENTER" textFill="#fd9294" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font></Button>
                      </children>
                   </GridPane>
                   <HBox>
@@ -159,28 +165,28 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="startBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleStart" text="START" textAlignment="CENTER" wrapText="true">
+                        <Button fx:id="startBtn" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleStart" styleClass="btnOutlined" text="START" textAlignment="CENTER" textFill="#fd9294" wrapText="true">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="30.0" />
                            </font>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#restart" text="RESTART" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#restart" styleClass="btnOutlined" text="RESTART" textAlignment="CENTER" textFill="#fd9294" wrapText="true" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="30.0" />
                            </font>
                         </Button>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#stop" text="STOP" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#stop" styleClass="btnOutlined" text="STOP" textAlignment="CENTER" textFill="#fd9294" wrapText="true" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets top="5.0" />
                            </GridPane.margin>
                            <font>
-                              <Font size="36.0" />
+                              <Font name="System Bold" size="30.0" />
                            </font>
                         </Button>
                      </children>

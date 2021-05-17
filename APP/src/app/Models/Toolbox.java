@@ -17,7 +17,7 @@ public class Toolbox {
     public static final String PATH_NODES_IN = PATH + "France.nodes.csv";
     public static final String PATH_NODES_OUT = PATH + "France.nodes.out.csv";
     
-    public static final int DEFAULT_SIZE = 10;
+    public static final int DEFAULT_SIZE = 8;
     
     public static final String CLASS_GRID_ITEM = "background_tile";
     public static final String CLASS_GRID_ITEM_FILLED = "background_tile_filled";
