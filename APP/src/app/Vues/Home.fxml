@@ -34,7 +34,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 2px; -fx-border-color: #FD9294;" text="LOAD GAME" textFill="#fd9294">
+                  <Button mnemonicParsing="false" onAction="#openMapLoader" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 2px; -fx-border-color: #FD9294;" text="LOAD GAME" textFill="#fd9294">
                      <font>
                         <Font name="System Bold" size="31.0" />
                      </font>

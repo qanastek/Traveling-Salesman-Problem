@@ -43,3 +43,13 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 .test {
     -fx-font-family: 'AlloyInk';
 }
+
+.btnOutlined {
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #FD9294;
+}
+.customised-text{
+	-fx-fill: #FD9294;
+}
