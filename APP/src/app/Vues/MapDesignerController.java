@@ -167,11 +167,11 @@ public class MapDesignerController implements Initializable {
     }  
     
     @FXML
-    private void back(){
+    private void back(){ 
         
-        // Remove all cities      
-        deleteAll();
-       
+        // Delete Items
+        deleteAll();  
+        
         System.out.println("back");
                 
         try {
@@ -191,15 +191,17 @@ public class MapDesignerController implements Initializable {
     @FXML
     private void deleteAll(){
         
-        // Clear the HashMap
-        Toolbox.getNodes().clear();
+        System.out.println("------- DELETED -------");
         
-        removeCitiesScreen();
+        // Clear the HashMap
+        Toolbox.points.clear();
+        
+        // Clear View
+        removeCitiesScreen();        
     }    
     
     private void removeCitiesScreen() {
-        
-        
+               
         // Remove GUI Filled Elements
         for(Node n : grid.getChildren()) {
             

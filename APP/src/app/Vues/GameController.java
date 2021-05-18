@@ -405,6 +405,9 @@ public class GameController implements Initializable, Observer {
                 node.getName()
             );
             
+            n.setAttribute("x", node.getX());
+            n.setAttribute("y", node.getY());
+            
 //            n.setAttribute("xy", node.getX(), node.getY());
             n.setAttribute("ui.label", "VILLE N°" + node.getIdentifier());
             
@@ -449,7 +452,8 @@ public class GameController implements Initializable, Observer {
 //        graph.addAttribute("ui.stylesheet", "node { size: 20px; z-index: 1; fill-color: #999; text-alignment: under; text-offset: 0px, 10px;} edge { z-index: 0; fill-color: #333; size: 3px; arrow-shape: arrow;}");
         
         FxViewer mView = new FxViewer(graph, FxViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
-        mView.enableAutoLayout();
+//        mView.enableAutoLayout();
+        mView.disableAutoLayout();
         FxViewPanel panel = (FxViewPanel) mView.addView(FxViewer.DEFAULT_VIEW_ID, new FxGraphRenderer());     
         panel.setMaxSize(Double.MAX_VALUE,Double.MAX_VALUE);   
 //        panel.setPrefSize(Double.MAX_VALUE,Double.MAX_VALUE);
