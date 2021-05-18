@@ -70,10 +70,9 @@
 - [ ] Donner un nom à la save
 - [ ] Link `Game` avec le map préalablement créer
   - [ ] Faire que cela marche aussi dans load map, donc passer en param ou load le csv dans la varible static lors du clique sur Save
-- [ ] Proposer `SAVE` et `SAVE & PLAY`
 - [ ] Faire que le réglage avec le `Slider` soit plus simple
 - [ ] Rendre responsive le graph
-- [ ] Implémenter les boutton `load` et `create` dans la vue `Game`
+- [ ] Implémenter les boutton `load` et `edit` dans la vue `Game`
 - [ ] Update la distance total
 - [ ] Update le timer total
 - [ ] Ajouter les flèches dans le sens du `path`

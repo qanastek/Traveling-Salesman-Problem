@@ -5,7 +5,10 @@
  */
 package app.Models;
 
+import java.time.Duration;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -39,6 +42,11 @@ public class Toolbox {
     
     public static int GENERATED_ID = 0;
     
+    public static ZonedDateTime departureDate;
+    public static ZonedDateTime arrivalDate;
+    
+    public static HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
+    
     public static int fromTo(int from, int to) {
         return Integer.parseInt("1" + String.valueOf(from) + String.valueOf(to));
     }    
@@ -48,5 +56,17 @@ public class Toolbox {
         System.out.println("Start saving...");
         CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
         System.out.println("Saved!");
+    }
+
+    public static int getDuration() {
+        
+        Duration duration = Duration.between(Toolbox.departureDate, Toolbox.arrivalDate);
+
+        return (int) duration.toMillis() / 1000;
+    }
+    
+    public static ArrayList<NodeCoordinates> getNodes()
+    {
+        return new ArrayList<NodeCoordinates>(points.values());
     }
 }

@@ -5,6 +5,7 @@
  */
 package app.Vues;
 
+import app.APP;
 import app.Models.CustomEventHandler;
 import app.Models.NodeCoordinates;
 import app.Models.Toolbox;
@@ -48,7 +49,7 @@ public class MapDesignerController implements Initializable {
     @FXML
     private GridPane grid;
     
-    private HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
+//    private HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
     
     /**
      * Initializes the controller class.
@@ -62,7 +63,8 @@ public class MapDesignerController implements Initializable {
 //                public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
 //                }			
 //        });
-        
+
+        APP.keepAspectRatio1TO1();
         // Add Columns
         for (int i = 0; i < Toolbox.DEFAULT_SIZE; i++) {            
             ColumnConstraints cc = new ColumnConstraints();
@@ -95,29 +97,36 @@ public class MapDesignerController implements Initializable {
                         
                         System.out.println(getText());
                         
-                        // Ajout
+                        String nodeId = "" + x + y;
+
+                        // add point
                         if(!currentPane.getStyleClass().contains(Toolbox.CLASS_GRID_ITEM_FILLED)) {
-                            
-                            currentPane.getStyleClass().remove(Toolbox.CLASS_GRID_ITEM);
-                            currentPane.getStyleClass().add(Toolbox.CLASS_GRID_ITEM_FILLED);
+
+                            setNodePane(currentPane);
                             
                             Toolbox.GENERATED_ID++;
                             
-                            points.put("" + x + y, new NodeCoordinates(Toolbox.GENERATED_ID,x,y));
+                            Toolbox.points.put(nodeId, new NodeCoordinates(Toolbox.GENERATED_ID,x,y));
                         }
+                        // remove point
                         else {                  
                             
-                            currentPane.getStyleClass().add(Toolbox.CLASS_GRID_ITEM);
-                            currentPane.getStyleClass().remove(Toolbox.CLASS_GRID_ITEM_FILLED);
-                            
-                            points.remove("" + x + y);
+                            clearNodePane(currentPane);
+
+                            Toolbox.points.remove(nodeId);
                         }
                         
-                        System.out.println(points.values());
+//                        System.out.println("###########-- points ---");
+//                        System.out.println(Toolbox.points.values());
                     }
                 });
                 
+                // populate pane
+                populate(currentPane,i,j);
+                
+                // append pane into grid
                 grid.add(currentPane, i, j);
+
             }
         }
     }
@@ -126,7 +135,7 @@ public class MapDesignerController implements Initializable {
     private void save(){
         
         // If empty
-        if(points.values().size() <= 0) {
+        if(Toolbox.getNodes().size() <= 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Aucune ville de posée!");
             alert.setHeaderText("Aucune ville n'a était posée!");
@@ -136,12 +145,16 @@ public class MapDesignerController implements Initializable {
         }
         
         // Save in the csv file
-        ArrayList<NodeCoordinates> values = new ArrayList(points.values());
+        ArrayList<NodeCoordinates> values = new ArrayList(Toolbox.getNodes());
         Toolbox.save(values);
                 
+//        System.out.println("-------------------------------------------");
+//        System.out.println(getClass().getResource("Game.fxml"));
+//        System.out.println("-------------------------------------------");
+        
         try {
             
-            AnchorPane root = FXMLLoader.load(getClass().getResource("Game.fxml"));       
+            AnchorPane root = FXMLLoader.load(getClass().getResource("Game.fxml"));   
             ap.setTopAnchor(root,0.0);
             ap.setBottomAnchor(root,0.0);
             ap.setLeftAnchor(root,0.0);
@@ -155,6 +168,9 @@ public class MapDesignerController implements Initializable {
     
     @FXML
     private void back(){
+        
+        // Remove all cities      
+        deleteAll();
        
         System.out.println("back");
                 
@@ -176,7 +192,13 @@ public class MapDesignerController implements Initializable {
     private void deleteAll(){
         
         // Clear the HashMap
-        points.clear();
+        Toolbox.getNodes().clear();
+        
+        removeCitiesScreen();
+    }    
+    
+    private void removeCitiesScreen() {
+        
         
         // Remove GUI Filled Elements
         for(Node n : grid.getChildren()) {
@@ -186,5 +208,38 @@ public class MapDesignerController implements Initializable {
             currentPane.getStyleClass().add(Toolbox.CLASS_GRID_ITEM);
             currentPane.getStyleClass().remove(Toolbox.CLASS_GRID_ITEM_FILLED);            
         }
-    }    
+    }
+    
+    /**
+     * populate pane
+     * @param pane
+     */
+    private void populate(Pane pane, int x, int y)
+    {
+        String id = ""+ x + y;
+        if(Toolbox.points.get(id) != null)
+            setNodePane(pane);
+        else
+            clearNodePane(pane);
+    }
+    
+    /**
+     * set node pane : add point design
+     * @param pane
+     */
+    private void setNodePane(Pane pane)
+    {
+        pane.getStyleClass().remove(Toolbox.CLASS_GRID_ITEM);
+        pane.getStyleClass().add(Toolbox.CLASS_GRID_ITEM_FILLED);
+    }
+
+    /**
+     * clear node pane : remove point design
+     * @param pane
+     */
+    private void clearNodePane(Pane pane)
+    {
+        pane.getStyleClass().add(Toolbox.CLASS_GRID_ITEM);
+        pane.getStyleClass().remove(Toolbox.CLASS_GRID_ITEM_FILLED);
+    }
 }

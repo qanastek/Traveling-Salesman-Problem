@@ -5,6 +5,7 @@
  */
 package app.Vues;
 
+import app.APP;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +31,7 @@ public class HomeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        APP.keepAspectRatio1TO1();
     }    
         
     @FXML

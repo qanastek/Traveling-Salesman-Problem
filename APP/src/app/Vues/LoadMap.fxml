@@ -42,7 +42,7 @@
             </HBox>
             <HBox spacing="20.0">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="btnOutlined" text="&lt; RETOUR" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="btnOutlined" text="&lt; BACK" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>

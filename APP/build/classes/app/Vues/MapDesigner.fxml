@@ -23,7 +23,7 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #8C949E;" text="&lt; RETOUR" textFill="#8c949e">
+                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #8C949E;" text="&lt; BACK" textFill="#8c949e">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -38,7 +38,7 @@
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="saveBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #1eb043;" text="SAVE" textFill="#1eb043">
+                  <Button fx:id="saveBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #1eb043;" text="START" textFill="#1eb043">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
