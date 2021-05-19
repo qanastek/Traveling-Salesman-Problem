@@ -18,6 +18,13 @@ import java.net.URL;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
@@ -34,6 +41,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.util.Pair;
 
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
@@ -47,7 +55,7 @@ import org.graphstream.ui.javafx.FxGraphRenderer;
  */
 public class GameController implements Initializable, Observer {
     
-    private static final String ACTIVE = "fill-color: rgb(101, 156, 19);";
+    private static final String ACTIVE = "fill-color: rgb(181, 8, 204);";
     private static final String BASE = "fill-color: rgb(144, 148, 138);";
 
     // Graph
@@ -86,6 +94,9 @@ public class GameController implements Initializable, Observer {
     @FXML
     private Pane graphArea;
         
+    private HashMap<String,Pair<Integer,Integer>> path = new HashMap();
+//    private ArrayList<Pair<Integer,Integer>> history = new ArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -191,6 +202,11 @@ public class GameController implements Initializable, Observer {
     }
         
     @FXML
+    private void save() {
+        System.out.println("-------------------------- save");
+    }
+    
+    @FXML
     private void stop() {
         System.out.println("-------------------------- stop");
         setStopped();
@@ -279,9 +295,9 @@ public class GameController implements Initializable, Observer {
                 
                 if(from == to) continue;
                 
-//                System.out.println("from: " + from);
-//                System.out.println("to: " + from);
-//                System.out.println("Toolbox: " + Toolbox.fromTo(from,to));
+                System.out.println("from: " + from);
+                System.out.println("to: " + to);
+                System.out.println("Toolbox: " + Toolbox.fromTo(from,to));
                                 
                 // Add tp the edges array
                 this.edges.add(new EdgeCoordinates(
@@ -340,7 +356,7 @@ public class GameController implements Initializable, Observer {
     }
     
     // Update the graph edge
-    private void updateGraph(TSPModel_PtiDeb.ActionType action, int from, int to) {
+    private void updateGraph(TSPModel_PtiDeb.ActionType action, int identifierID, int from, int to) {
         
         System.out.println("- START -");
         
@@ -348,32 +364,48 @@ public class GameController implements Initializable, Observer {
         System.out.println(to);
         
         System.out.println("identifier");
+//        String identifier = String.valueOf(identifierID);
         String identifier = String.valueOf(Toolbox.fromTo(from,to));
-//        String identifier = String.valueOf(from) + String.valueOf(to);
         System.out.println(identifier);
 
         System.out.println("- FETCH -");
         
-        Edge AB = graph.getEdge(identifier);
+        Edge AB = graph.getEdge(identifierID);
         System.out.println(AB);
 
-        Node A = graph.getNode(from);     
+        Node A = graph.getNode(String.valueOf(from));     
         System.out.println(A);
 
-        Node B = graph.getNode(to);
+        Node B = graph.getNode(String.valueOf(to));
         System.out.println(B);
         
         System.out.println("- END FETCH -");
 
         if(action == TSPModel_PtiDeb.ActionType.Remove) {
 //            AB.setAttribute("ui.style", BASE);
+
+            // Smallest identifier at the left
+//            Pair pair = from < to ? new Pair(from,to) : new Pair(to,from);
+
+            // Remove from the Path HashMap
+//            path.remove(identifier);
+//            history.add(new Pair(from,to));
+            path.put(identifier, new Pair(from,to));
+
             A.setAttribute("ui.style", BASE);
             B.setAttribute("ui.style", BASE);
+            graph.getEdge(identifier).setAttribute("ui.style", BASE);
         }
         else {
 //            AB.setAttribute("ui.style", ACTIVE);
+
+            // Add in the Path HashMap
+//            history.add(new Pair(from,to));
+//            path.put(identifier, new Pair(from,to));
+            
             A.setAttribute("ui.style", ACTIVE);
             B.setAttribute("ui.style", ACTIVE);
+            graph.getEdge(identifier).setAttribute("ui.style", ACTIVE);
         }
                 
         System.out.println("- END UPDATE -");
@@ -386,15 +418,6 @@ public class GameController implements Initializable, Observer {
         // fill-image: url('https://img.icons8.com/ios/452/city.png'); 
         graph.setAttribute("ui.stylesheet", "node { size: 20px; z-index: 1; fill-color: #999; text-alignment: under; text-offset: 0px, 10px;} edge { z-index: 0; fill-color: #333; size: 3px; arrow-shape: arrow;}");
 
-//        graph.addAttribute("ui.quality");
-//        graph.addAttribute("ui.antialias");
-//        graph.setAttribute("ui.stylesheet", "url('C:\\Users\\yanis\\Desktop\\Cours\\Master\\M1\\S2\\Interface Graphique\\TPs\\TP2\\APP\\src\\app\\Vues\\stylesheet.css')");
-
-//        graph.addNode("A");
-//        graph.addNode("B");
-//        graph.addEdge("AB","A","B");
-//        graph.addEdge("BA","B","A");
-        
         // Build Nodes
         for(NodeCoordinates node : Toolbox.getNodes()) {
             
@@ -416,9 +439,6 @@ public class GameController implements Initializable, Observer {
 //            n.setAttribute("fill-image", "url('https://img.icons8.com/bubbles/2x/city.png');");
         }
         
-        System.out.println("*****************************");
-        System.out.println(graph);
-        
         // Build Edges
         for(EdgeCoordinates edge : this.edges) {
             
@@ -433,19 +453,21 @@ public class GameController implements Initializable, Observer {
             System.out.println(to);            
             System.out.println("/*/*/");
             
-            // TODO: Issue with last line if contains 213
+//            Edge e = graph.addEdge(
+//                name,
+//                String.valueOf(from),
+//                String.valueOf(to)
+//            );
+            
             Edge e = graph.addEdge(
                 name,
                 String.valueOf(from),
-                String.valueOf(to)
+                String.valueOf(to),
+                true
             );
             
-            System.out.println("//////////************************//////////");
-        
-//            e.setAttribute("ui.style", BASE);
+            e.setAttribute("ui.style", BASE);
         }
-        
-        System.out.println("/////////////////////////////////////////////////////////////////////////////");
         
         System.setProperty("org.graphstream.ui", "swing");        
         
@@ -463,6 +485,54 @@ public class GameController implements Initializable, Observer {
         root.setRightAnchor(panel,0.0);  
         this.graphArea.getChildren().add(panel);
     }  
+    
+    private String getPath() {
+        
+        String res = "";
+        
+        // Convert values to an ArrayList
+        ArrayList<Pair<Integer,Integer>> arr = new ArrayList(path.values());
+        
+        // Order by ASC Nodes identifier
+        Collections.sort(arr, new Comparator<Pair<Integer, Integer>>() {
+            @Override
+            public int compare(Pair<Integer, Integer> p1, Pair<Integer, Integer> p2) {
+                
+                String id1 = "" + p1.getKey() + p1.getValue();
+                String id2 = "" + p2.getKey() + p2.getValue();
+                
+                return id1.compareTo(id2);
+            }
+        });
+        
+        System.out.println("*********************************************************");
+        System.out.println(arr);
+        
+        // Compile in a String
+        for (Pair<Integer, Integer> vectrex : arr) {
+            
+            // Edge Identifier
+            String identifier = String.valueOf(Toolbox.fromTo(vectrex.getKey(),vectrex.getValue()));
+            
+            graph.getNode(String.valueOf(vectrex.getKey())).setAttribute("ui.style", ACTIVE);
+            graph.getNode(String.valueOf(vectrex.getValue())).setAttribute("ui.style", ACTIVE);
+            
+            Edge AB = graph.getEdge(identifier);
+//            System.out.println(AB);
+            AB.setAttribute("ui.style", "fill-color: rgb(0,100,255);");
+//            AB.setAttribute("ui.style", "fill-color: rgb(0,100,255); arrow-shape: arrow;");
+//            AB.setAttribute("ui.stylesheet", "{arrow-shape: arrow; arrow-size: 10px, 10px;}");
+            
+            // Add vectrex
+            res += vectrex.getKey() + " <--> " + vectrex.getValue() + "\n";
+        }
+        
+        // Debug
+        System.out.println(res);
+        
+        // Return sequence
+        return res;
+    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -476,6 +546,10 @@ public class GameController implements Initializable, Observer {
         int identifierP1 = this.getTsp().getSegmentP1();
         int identifierP2 = this.getTsp().getSegmentP2();
         
+        System.out.println(identifierID);
+        System.out.println(identifierP1);
+        System.out.println(identifierP2);
+        
         Toolbox.arrivalDate = ZonedDateTime.now();
         int duration = Toolbox.getDuration();
         time.setText(String.valueOf(duration) + " sec");
@@ -486,26 +560,28 @@ public class GameController implements Initializable, Observer {
             System.out.println("Finished");
             System.out.println("getDistanceTotale: " + this.getTsp().getDistanceTotale());
             System.out.println("getSegmentDistance: " + this.getTsp().getSegmentDistance());
+            System.out.println(path);
             setFinished();
-            this.getTsp().deleteObserver(this);
+            getPath();
 //            stop();
             return;
         }
+        else if(action == TSPModel_PtiDeb.ActionType.NewBest) {
+            System.out.println("getDistanceTotale: " + (int) this.getTsp().getDistanceTotale());
+            distance.setText((int) this.getTsp().getDistanceTotale() + " KM");            
+            path.clear();
+        }
         else {
             
-            if(action == TSPModel_PtiDeb.ActionType.NewBest) {
-                System.out.println("getDistanceTotale: " + (int) this.getTsp().getDistanceTotale());
-                distance.setText((int) this.getTsp().getDistanceTotale() + " KM");
-            }
-               
             try {
                 this.getTsp().setPause(true);
                 TimeUnit.MILLISECONDS.sleep(speed);
                 this.getTsp().setPause(false);
-                updateGraph(action, identifierP1, identifierP2);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
+
+            updateGraph(action, identifierID, identifierP1, identifierP2);
         }
         
         System.out.println("-------------------------------------------------------");

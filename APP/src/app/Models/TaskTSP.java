@@ -14,10 +14,13 @@ import javafx.concurrent.Task;
  * @author yanis
  */
 public class TaskTSP extends Task<Void> {
+    
+    Observer obs;
 
     TSPModel_PtiDeb tsp;
     
     public TaskTSP(Observer o) {
+        obs = o;
         this.tsp = new TSPModel_PtiDeb(o);
     }
     
@@ -30,4 +33,19 @@ public class TaskTSP extends Task<Void> {
         this.tsp.run();
         return null;
     }    
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
+    @Override
+    protected void succeeded() {
+        
+        System.out.println("Remove observer!");
+        tsp.deleteObservers();
+        
+        super.done();
+    }
 }

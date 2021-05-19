@@ -47,8 +47,9 @@ public class Toolbox {
     
     public static HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
     
-    public static int fromTo(int from, int to) {
-        return Integer.parseInt("1" + String.valueOf(from) + String.valueOf(to));
+    public static String fromTo(int from, int to) {
+        return "" + from + to;
+//        return String.valueOf(from) + "-" + String.valueOf(to);
     }    
     
     // Save the nodes into a csv file

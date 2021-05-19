@@ -11,11 +11,11 @@ package app.Models;
  */
 public class EdgeCoordinates implements CSVParsable {
     
-    private int identifier;
+    private String identifier;
     private int from;
     private int to;
 
-    public EdgeCoordinates(int identifier, int from, int to) {
+    public EdgeCoordinates(String identifier, int from, int to) {
         this.identifier = identifier;
         this.from = from;
         this.to = to;
@@ -25,11 +25,11 @@ public class EdgeCoordinates implements CSVParsable {
         return String.valueOf(identifier);
     }
     
-    public int getIdentifier() {
+    public String getIdentifier() {
         return identifier;
     }
 
-    public void setIdentifier(int identifier) {
+    public void setIdentifier(String identifier) {
         this.identifier = identifier;
     }
 

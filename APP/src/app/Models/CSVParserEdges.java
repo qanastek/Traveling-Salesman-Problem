@@ -38,7 +38,7 @@ public class CSVParserEdges {
                 
                 result.add(
                     new EdgeCoordinates(
-                        Integer.parseInt(splitted[0]),
+                        splitted[0],
                         Integer.parseInt(splitted[1]),
                         Integer.parseInt(splitted[2])
                     )
