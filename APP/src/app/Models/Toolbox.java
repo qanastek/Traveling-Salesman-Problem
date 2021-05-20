@@ -5,10 +5,16 @@
  */
 package app.Models;
 
+import app.Vues.GameController;
+import java.io.File;
 import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -16,9 +22,18 @@ import java.util.HashMap;
  */
 public class Toolbox {
     
-    public static final String PATH = "C:\\Users\\yanis\\Desktop\\Cours\\Master\\M1\\S2\\Interface Graphique\\TPs\\TP2\\Test\\";
-    public static final String PATH_NODES_IN = PATH + "France.nodes.csv";
-    public static final String PATH_NODES_OUT = PATH + "France.nodes.out.csv";
+    public static String APP_NAME = "CERI_TSP";
+    
+    public static String loadedFile;
+    public static Boolean demo = false;
+    
+    public static final String PATH_APP = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "/" + APP_NAME + "/";
+    public static final String PATH = PATH_APP + "Data/";
+    public static final String PATH_DEMOS = PATH + "Demos/";
+    public static final String PATH_MAPS = PATH + "Maps/";
+//    public static final String PATH = Toolbox.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Data/";
+    public static final String FRANCE_PATH = PATH_DEMOS + "France.nodes.csv";
+    public static final String ITALIE_PATH = PATH_DEMOS + "Italie.nodes.csv";
     
     public static final int DEFAULT_SIZE = 8;
     
@@ -52,12 +67,12 @@ public class Toolbox {
 //        return String.valueOf(from) + "-" + String.valueOf(to);
     }    
     
-    // Save the nodes into a csv file
-    public static void save(ArrayList<NodeCoordinates> nodes) {
-        System.out.println("Start saving...");
-        CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
-        System.out.println("Saved!");
-    }
+//    // Save the nodes into a csv file
+//    public static void save(ArrayList<NodeCoordinates> nodes) {
+//        System.out.println("Start saving...");
+//        CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
+//        System.out.println("Saved!");
+//    }
 
     public static int getDuration() {
         
@@ -70,4 +85,88 @@ public class Toolbox {
     {
         return new ArrayList<NodeCoordinates>(points.values());
     }
+      /**
+     * set nodes
+     * @param nodes
+     */
+    public static void setNodes(ArrayList<NodeCoordinates> nodes)
+    {
+        // clear all points first
+        points.clear();
+
+        // re-set new points
+        for(NodeCoordinates node: nodes)
+        {
+            int x = node.getX();
+            int y = node.getY();
+            String nodeId = "" + x + y;
+            GENERATED_ID++;
+            points.put(nodeId, new NodeCoordinates(GENERATED_ID,x,y));
+        }
+    }
+
+    //##
+    /**
+     * get map list name (csv files)
+     * @return
+     */
+    public static ArrayList<String> getMaplist(){
+        File folder = new File(Toolbox.PATH_MAPS);
+        File[] listOfFiles = folder.listFiles();
+
+        ArrayList<String> mapFileList = new ArrayList<String>();
+        for (int i = 0; i < listOfFiles.length; i++) {
+
+            if (listOfFiles[i].isFile()) {
+                mapFileList.add( listOfFiles[i].getName() );
+            } 
+            // else if (listOfFiles[i].isDirectory()) {
+            //     System.out.println("Directory " + listOfFiles[i].getName());
+            // }
+        }
+        return mapFileList;
+    }
+
+    //##************************  
+    public static String getMapTitleByFileName(String filename){
+        return filename.split(".nodes")[0];
+    }
+    public static String getMapTitle(){
+        return loadedFile.split(".nodes")[0];
+    }
+
+    public static void clearNodes(){
+        points.clear();
+        loadedFile = null;
+    }
+
+    /**
+     * show a dialog message
+     * @param title
+     * @param msg
+     * @param type
+     */
+    public static void showMessage(String title, String msg, Alert.AlertType type){
+        
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(msg);
+        // alert.setContentText("Cliquer sur les cadrillage pour poser votre premiÃ¨re ville.");
+        alert.showAndWait();
+    }
+    /**
+     * show a confirmation dialog
+     * @param title
+     * @param msg
+     * @return
+     */
+    public static Boolean confirm(String title, String msg)
+    {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(msg);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return ( result.get() == ButtonType.OK );
+    }    
 }

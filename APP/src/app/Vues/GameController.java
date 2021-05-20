@@ -34,8 +34,10 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -93,6 +95,12 @@ public class GameController implements Initializable, Observer {
     
     @FXML
     private Pane graphArea;
+    
+    @FXML
+    private Button saveBtn;
+    
+    @FXML
+    private TextField mapTitle;
         
     private HashMap<String,Pair<Integer,Integer>> path = new HashMap();
 //    private ArrayList<Pair<Integer,Integer>> history = new ArrayList();
@@ -107,6 +115,19 @@ public class GameController implements Initializable, Observer {
         sliderSpeed.valueProperty().addListener((observable, oldValue, newValue) -> {
             changeSpeed(newValue.intValue());
         });
+        
+        if(Toolbox.loadedFile != null)
+        {
+            mapTitle.setText( Toolbox.getMapTitle() );
+        }
+        else
+        {
+            mapTitle.setText("");
+        }
+
+        // a demo map : disable title dans save
+        mapTitle.setDisable(Toolbox.demo);
+        saveBtn.setVisible(!Toolbox.demo);
         
         APP.keepAspectRatio1TO1();
 //        APP.keepAspectRatio16TO9();
@@ -215,10 +236,26 @@ public class GameController implements Initializable, Observer {
             
         }
     }
-        
+    
     @FXML
-    private void save() {
-        System.out.println("-------------------------- save");
+    void save() {
+
+        // make sure name has been specified
+        if(mapTitle.getText().equals("")){
+            Toolbox.showMessage("Error", "Map name is not specified.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        // save into csv
+        String outFilename = mapTitle.getText() + ".nodes.csv";
+        String outFilenamePath = Toolbox.PATH_MAPS + outFilename; 
+        CSVParser.removeFile(Toolbox.loadedFile); // remove current csv
+        Toolbox.loadedFile = outFilename; //reset loaded value
+        CSVParser.writeFile(Toolbox.getNodes(), outFilenamePath , ","); // create new csv
+
+        // show success message
+        String successMsg = "Map : '"+ mapTitle.getText() + "' has been saved";
+        Toolbox.showMessage("Success", successMsg , Alert.AlertType.INFORMATION);
     }
     
     @FXML
@@ -494,12 +531,6 @@ public class GameController implements Initializable, Observer {
             System.out.println(from);
             System.out.println(to);            
             System.out.println("/*/*/");
-            
-//            Edge e = graph.addEdge(
-//                name,
-//                String.valueOf(from),
-//                String.valueOf(to)
-//            );
             
             Edge e = graph.addEdge(
                 name,

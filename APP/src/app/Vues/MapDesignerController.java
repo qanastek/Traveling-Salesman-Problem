@@ -146,7 +146,7 @@ public class MapDesignerController implements Initializable {
         
         // Save in the csv file
         ArrayList<NodeCoordinates> values = new ArrayList(Toolbox.getNodes());
-        Toolbox.save(values);
+//        Toolbox.save(values);
                 
 //        System.out.println("-------------------------------------------");
 //        System.out.println(getClass().getResource("Game.fxml"));

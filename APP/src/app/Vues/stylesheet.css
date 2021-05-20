@@ -43,12 +43,12 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 .backgroundColor {
     /*#6942A0*/
     /*-fx-background-color: linear-gradient(to top, white, #6942A0);*/
-    -fx-background-color: linear-gradient(to top, #64448B, #9769D7);
+    -fx-background-color: linear-gradient(to top, #7950AC, #9769D7);
 }
 
 .backgroundColorDark {
     /*-fx-background-color: #613B93;*/
-    -fx-background-color: linear-gradient(to top, #64448B, #9769D7);
+    -fx-background-color: linear-gradient(to top, #7950AC, #9769D7);
 }
 
 .textColor {
@@ -68,6 +68,15 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-border-radius: 10px;
     -fx-border-width: 2px;
     -fx-border-color: #FBFAFC;
+}
+.buttonColor:hover {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill: #FBE44D;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #FBE44D;
+    -fx-effect: dropshadow(three-pass-box, #FBE44D, 10, 0, 0, 0);
 }
 
 .btnOutlined {
@@ -114,4 +123,32 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-background-color: transparent;
     -fx-border-radius: 25px;
     -fx-border-width: 2px;
+}
+
+
+/*
+---------------- MAP LOADING ------------------ 
+*/
+
+.load-a-map-btn-wrapper:hover .load-a-map-btn{
+    /* -fx-background-color: blue;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px; */
+    /* -fx-cursor: pointer; */
+    /* -fx-text-fill: black;  */
+}
+.load-a-map-btn{
+    -fx-fill: #fd9294; 
+    -fx-font: 19 System; 
+    -fx-font-weight: bold;
+}
+/*.load-a-map-btn:hover{
+    -fx-text-fill: #ed1fbd;
+}*/
+.empty-map-text{
+    -fx-text-fill: #ed1fbd; 
+    -fx-fill: #fd9294;
+    -fx-text-inner-color: #ed1fbd; 
+    -fx-font: 19 System; 
+    -fx-font-weight: bold;
 }

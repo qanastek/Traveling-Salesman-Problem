@@ -6,6 +6,7 @@
 package app.Vues;
 
 import app.APP;
+import app.Models.Toolbox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,7 +37,10 @@ public class HomeController implements Initializable {
         
     @FXML
     private void openMapDesigner() {
-                
+        
+        Toolbox.clearNodes();
+        Toolbox.demo = false;
+        
         try {
             
             AnchorPane root = FXMLLoader.load(getClass().getResource("MapDesigner.fxml"));     

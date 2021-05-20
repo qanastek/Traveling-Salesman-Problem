@@ -6,6 +6,7 @@
 package app;
 
 import app.Models.Toolbox;
+import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -54,7 +55,30 @@ public class APP extends Application {
         stage.setHeight(800);
         stage.show();
         
+        createAppFolder();
+        
         keepAspectRatio1TO1();
+    }
+    
+    private void createAppFolder() {        
+        createFolder(Toolbox.PATH_APP);
+        createFolder(Toolbox.PATH);
+        createFolder(Toolbox.PATH_DEMOS);
+        createFolder(Toolbox.PATH_MAPS);
+    }
+    
+    private void createFolder(String path) {
+        
+        File file = new File(path);
+        
+        if (!file.exists()) {
+            
+            if (file.mkdir()) {
+                System.out.println("Directory is created!");
+            } else {
+                System.out.println("Failed to create directory!");
+            }
+        }
     }
 
     /**

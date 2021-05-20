@@ -57,6 +57,8 @@ public class CSVParser {
     
     public static void writeFile(ArrayList<NodeCoordinates> items, String path, String sep) {
         
+        System.out.println("----------------------------------------------------------------------------------------------------------------- " + path);
+        
         try {
             
             // Check if created
@@ -88,5 +90,10 @@ public class CSVParser {
           e.printStackTrace();
         }
         
+    }
+    
+    public static Boolean removeFile(String filename){
+        File f = new File(Toolbox.PATH_MAPS + filename);
+        return f.delete();
     }
 }
