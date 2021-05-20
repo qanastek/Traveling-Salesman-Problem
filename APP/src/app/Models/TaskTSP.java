@@ -28,6 +28,10 @@ public class TaskTSP extends Task<Void> {
         return tsp;
     }
     
+    public void setPause(Boolean status) {
+        this.tsp.setPause(status);
+    }
+    
     @Override
     protected Void call() throws Exception {
         this.tsp.run();

@@ -59,7 +59,7 @@ public class GameController implements Initializable, Observer {
     private static final String BASE = "fill-color: rgb(144, 148, 138);";
 
     // Graph
-    Graph graph = new SingleGraph("TSP");
+    Graph graph = new MultiGraph("TSP");
     
 //     TSP Model
     Thread tspThread;
@@ -118,7 +118,7 @@ public class GameController implements Initializable, Observer {
     }
     
     private void setRunning() {
-        System.out.println("-------------------------- setRunning");
+        System.out.println("-------------------------- setRunning inside");
         status.setText(Toolbox.RUNNING);
         
         statusIcon.setImage(
@@ -144,7 +144,7 @@ public class GameController implements Initializable, Observer {
     }
     
     private void setStopped() {
-        System.out.println("-------------------------- setRunning");
+        System.out.println("-------------------------- setStopped");
         status.setText(Toolbox.STOPPED);
         
         statusIcon.setImage(
@@ -181,10 +181,13 @@ public class GameController implements Initializable, Observer {
         
         // If is currently running
         if(status.getText().equals(Toolbox.RUNNING)) {
-            
-            if(tsp != null) this.getTsp().setPause(true);
-            
-            setPaused();
+
+            if(tsp != null) {
+                System.out.println("****************** Paused true");
+                setPaused();
+                getTsp().setPause(true);
+                this.getTsp().notifyObservers(this);
+            }            
         }
         else {
             
@@ -197,7 +200,19 @@ public class GameController implements Initializable, Observer {
             System.out.println("-------------------------- test new");
 //            csvParser();
             // Toolbox.save(nodes);
-            runTSP(Toolbox.getNodes());
+            
+            if(tspThread != null && tspThread.isAlive()) {
+                System.out.println("-------------------------- isAlive");
+                getTsp().setPause(false);
+                this.getTsp().notifyObservers(this);
+            }
+            else {
+                
+                System.out.println("-------------------------- is not alive");
+                runTSP(Toolbox.getNodes());         
+                
+            }
+            
         }
     }
         
@@ -210,6 +225,7 @@ public class GameController implements Initializable, Observer {
     private void stop() {
         System.out.println("-------------------------- stop");
         setStopped();
+        clearPath();
         tspThread.stop();
     }
     
@@ -217,7 +233,10 @@ public class GameController implements Initializable, Observer {
     private void restart() {
         System.out.println("-------------------------- restart");
         Toolbox.departureDate = ZonedDateTime.now();
+        clearPath();
         setStopped();
+        tspThread.stop();
+        toggleStart();
     }
     
     @FXML
@@ -273,6 +292,29 @@ public class GameController implements Initializable, Observer {
 //        System.out.println("All Loaded!");   
 //    }
     
+    private void clearPath() {
+                
+        
+        // Convert values to an ArrayList
+        ArrayList<Pair<Integer,Integer>> arr = getOrderedPath();
+        
+        System.out.println("*********************************************************");
+        System.out.println(arr);
+        
+        // Compile in a String
+        for (Pair<Integer, Integer> vectrex : arr) {
+            
+            // Edge Identifier
+            String identifier = String.valueOf(Toolbox.fromTo(vectrex.getKey(),vectrex.getValue()));
+            
+            graph.getNode(String.valueOf(vectrex.getKey())).setAttribute("ui.style", BASE);
+            graph.getNode(String.valueOf(vectrex.getValue())).setAttribute("ui.style", BASE);
+            graph.getEdge(identifier).setAttribute("ui.style", BASE);
+        }
+        
+        path.clear();
+    }
+    
     // Generate a complete graph
     private void generateEdges() {
         
@@ -314,8 +356,10 @@ public class GameController implements Initializable, Observer {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
     
+    // Load the data in the TSP model
     private void runTSP(ArrayList<NodeCoordinates> nodes) {
-        
+    
+        // Add points
         for(NodeCoordinates node : nodes) {
             
             this.getTsp().addPoint(
@@ -324,35 +368,33 @@ public class GameController implements Initializable, Observer {
                 node.getY()
             );
             
+            System.out.println("Node:");
             System.out.println(node);
-            System.out.println("aaaa");
         }
-        
-        System.out.println("-----------------------------");
-        
+                
         this.startup();
-        
-        Double totalDistance = this.getTsp().getDistanceTotale();
-        
-        System.out.println(totalDistance);        
-        System.out.println("-----------");
     }
     
+    // Start the thread
     private void startup() {
         
         Toolbox.departureDate = ZonedDateTime.now();
         
         tspThread = new Thread(tsp);
+        Toolbox.THREADS.clear();
         Toolbox.THREADS.add(tspThread);
         tspThread.start();
         
 //        tsp.run();
     }
     
-    private TSPModel_PtiDeb getTsp() {
+    private TSPModel_PtiDeb getTsp() {        
+        
+        if(this.tsp == null) {
+            tsp = new TaskTSP(this);
+        }        
         
         return this.tsp.getTsp();
-//        return this.tsp;
     }
     
     // Update the graph edge
@@ -462,11 +504,12 @@ public class GameController implements Initializable, Observer {
             Edge e = graph.addEdge(
                 name,
                 String.valueOf(from),
-                String.valueOf(to),
-                true
+                String.valueOf(to)
             );
             
-            e.setAttribute("ui.style", BASE);
+//            graph.setAttribute("ui.stylesheet", "edge { z-index: 0; fill-color: rgb(144, 148, 138); size: 3px; arrow-shape: arrow;}");
+
+//            e.setAttribute("ui.style", BASE);
         }
         
         System.setProperty("org.graphstream.ui", "swing");        
@@ -486,9 +529,7 @@ public class GameController implements Initializable, Observer {
         this.graphArea.getChildren().add(panel);
     }  
     
-    private String getPath() {
-        
-        String res = "";
+    private ArrayList<Pair<Integer,Integer>> getOrderedPath() {
         
         // Convert values to an ArrayList
         ArrayList<Pair<Integer,Integer>> arr = new ArrayList(path.values());
@@ -504,6 +545,16 @@ public class GameController implements Initializable, Observer {
                 return id1.compareTo(id2);
             }
         });
+        
+        return arr;
+    }
+    
+    private String getPath() {
+        
+        String res = "";
+        
+        // Convert values to an ArrayList
+        ArrayList<Pair<Integer,Integer>> arr = getOrderedPath();
         
         System.out.println("*********************************************************");
         System.out.println(arr);
@@ -564,6 +615,7 @@ public class GameController implements Initializable, Observer {
             setFinished();
             getPath();
 //            stop();
+            tsp = null;
             return;
         }
         else if(action == TSPModel_PtiDeb.ActionType.NewBest) {
@@ -574,9 +626,9 @@ public class GameController implements Initializable, Observer {
         else {
             
             try {
-                this.getTsp().setPause(true);
+//                this.getTsp().setPause(true);
                 TimeUnit.MILLISECONDS.sleep(speed);
-                this.getTsp().setPause(false);
+//                this.getTsp().setPause(false);
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }

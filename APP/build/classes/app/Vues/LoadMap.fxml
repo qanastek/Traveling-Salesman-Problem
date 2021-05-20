@@ -8,13 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefWidth="600.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Vues.LoadMapController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefWidth="600.0" styleClass="backgroundColorDark" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Vues.LoadMapController">
    <children>
       <VBox alignment="CENTER" prefWidth="100.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefWidth="200.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="customised-text" text="LOAD A MAP" textAlignment="CENTER" textOrigin="CENTER" HBox.hgrow="ALWAYS">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textColor" text="LOAD A MAP" textAlignment="CENTER" textOrigin="CENTER" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="34.0" />
                      </font>
@@ -23,17 +23,17 @@
             </HBox>
             <HBox spacing="20.0" VBox.vgrow="NEVER">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFrance" prefHeight="170.0" prefWidth="600.0" styleClass="btnOutlined" text="FRANCE" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFrance" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" text="FRANCE" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadEiffelTower" prefHeight="170.0" prefWidth="600.0" styleClass="btnOutlined" text="EIFFEL TOWER" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadEiffelTower" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" text="EIFFEL TOWER" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFile" prefHeight="170.0" prefWidth="600.0" styleClass="btnOutlined" text="LOAD FILE" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFile" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" text="LOAD FILE" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -42,7 +42,7 @@
             </HBox>
             <HBox spacing="20.0">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="btnOutlined" text="&lt; BACK" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="buttonColor" text="&lt; BACK" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>

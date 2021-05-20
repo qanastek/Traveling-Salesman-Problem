@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" java-vm-args="-Xmx4096m "  href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="APP.jar" size="203597" download="eager" />
+    <jar href="APP.jar" size="204220" download="eager" />
     <jar href="lib\TSPModel_PtiDeb.jar" size="28292" download="eager" />
     <jar href="lib\gs-algo-2.0.jar" size="8108677" download="eager" />
     <jar href="lib\gs-core-2.0.jar" size="916101" download="eager" />

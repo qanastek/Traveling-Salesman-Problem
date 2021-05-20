@@ -48,7 +48,7 @@ public class Toolbox {
     public static HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
     
     public static String fromTo(int from, int to) {
-        return "" + from + to;
+        return "" + from + "-" +  to;
 //        return String.valueOf(from) + "-" + String.valueOf(to);
     }    
     

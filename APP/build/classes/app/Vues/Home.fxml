@@ -9,14 +9,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Vues.HomeController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Vues.HomeController">
     <stylesheets>
         <URL value="@stylesheet.css" />
     </stylesheets>
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label contentDisplay="CENTER" styleClass="test" text="TRAVELING SALESMAN PROBLEM" textAlignment="CENTER" textFill="#fe9395" wrapText="true" VBox.vgrow="ALWAYS">
+            <Label contentDisplay="CENTER" styleClass="textColor" text="TRAVELING SALESMAN PROBLEM" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="42.0" />
                </font>
@@ -26,7 +26,7 @@
             </Label>
             <HBox alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#openMapDesigner" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 2px; -fx-border-color: #FD9294;" text="NEW GAME" textFill="#fd9294">
+                  <Button mnemonicParsing="false" onAction="#openMapDesigner" styleClass="buttonColor" text="NEW GAME">
                      <font>
                         <Font name="System Bold" size="31.0" />
                      </font>
@@ -34,7 +34,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#openMapLoader" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 2px; -fx-border-color: #FD9294;" text="LOAD GAME" textFill="#fd9294">
+                  <Button mnemonicParsing="false" onAction="#openMapLoader" styleClass="buttonColor" text="LOAD GAME">
                      <font>
                         <Font name="System Bold" size="31.0" />
                      </font>

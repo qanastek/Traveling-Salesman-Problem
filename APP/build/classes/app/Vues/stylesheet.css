@@ -40,8 +40,34 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-fill: #8b928a;
 }
 
-.test {
-    -fx-font-family: 'AlloyInk';
+.backgroundColor {
+    /*#6942A0*/
+    /*-fx-background-color: linear-gradient(to top, white, #6942A0);*/
+    -fx-background-color: linear-gradient(to top, #64448B, #9769D7);
+}
+
+.backgroundColorDark {
+    /*-fx-background-color: #613B93;*/
+    -fx-background-color: linear-gradient(to top, #64448B, #9769D7);
+}
+
+.textColor {
+    -fx-fill: #FBFAFC;    
+    -fx-text-fill: #FBFAFC;    
+}
+
+.textColorDark {
+    -fx-fill: #D1BFEA;    
+    -fx-text-fill: #D1BFEA;    
+}
+
+.buttonColor {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill: #FBFAFC;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #FBFAFC;
 }
 
 .btnOutlined {
@@ -52,4 +78,40 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 .customised-text{
 	-fx-fill: #FD9294;
+}
+
+.startBtn {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill:  #85B67A;
+    -fx-border-color:  #85B67A;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+}
+
+.stopBtn {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill:  #EA5255;
+    -fx-border-color:  #EA5255;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+}
+
+.restartBtn {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill:  #D7C229;
+    -fx-border-color:  #D7C229;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+}
+
+.saveBtn {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill:  #3E9FE0;
+    -fx-border-color:  #3E9FE0;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
 }
