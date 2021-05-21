@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package app.Models;
 
 import app.Vues.GameController;
@@ -17,10 +13,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javax.swing.filechooser.FileSystemView;
 
-/**
- *
- * @author yanis
- */
+
 public class Toolbox {
     
     public static String APP_NAME = "CERI_TSP";
@@ -32,7 +25,6 @@ public class Toolbox {
     public static final String PATH = PATH_APP + "Data/";
     public static final String PATH_DEMOS = PATH + "Demos/";
     public static final String PATH_MAPS = PATH + "Maps/";
-//    public static final String PATH = Toolbox.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Data/";
     public static final String FRANCE_PATH = PATH_DEMOS + "France.nodes.csv";
     public static final String ITALIE_PATH = PATH_DEMOS + "Italie.nodes.csv";
     
@@ -67,29 +59,24 @@ public class Toolbox {
     
     public static String fromTo(int from, int to) {
         return "" + from + "-" +  to;
-//        return "" + from + "-" +  to;
-//        return String.valueOf(from) + "-" + String.valueOf(to);
-    }    
+    }  
     
-//    // Save the nodes into a csv file
-//    public static void save(ArrayList<NodeCoordinates> nodes) {
-//        System.out.println("Start saving...");
-//        CSVParser.writeFile(nodes, Toolbox.PATH_NODES_OUT, ",");
-//        System.out.println("Saved!");
-//    }
-
     public static int getDuration() {
         
         Duration duration = Duration.between(Toolbox.departureDate, Toolbox.arrivalDate);
 
         return (int) duration.toMillis() / 1000;
     }
-    
+
+    /**
+     * set nodes
+     */
     public static ArrayList<NodeCoordinates> getNodes()
     {
         return new ArrayList<NodeCoordinates>(points.values());
     }
-      /**
+
+    /**
      * set nodes
      * @param nodes
      */
@@ -109,7 +96,6 @@ public class Toolbox {
         }
     }
 
-    //##
     /**
      * get map list name (csv files)
      * @return
@@ -124,14 +110,10 @@ public class Toolbox {
             if (listOfFiles[i].isFile()) {
                 mapFileList.add( listOfFiles[i].getName() );
             } 
-            // else if (listOfFiles[i].isDirectory()) {
-            //     System.out.println("Directory " + listOfFiles[i].getName());
-            // }
         }
         return mapFileList;
     }
 
-    //##************************  
     public static String getMapTitleByFileName(String filename){
         return filename.split(".nodes")[0];
     }
@@ -155,7 +137,6 @@ public class Toolbox {
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(msg);
-        // alert.setContentText("Cliquer sur les cadrillage pour poser votre premiÃ¨re ville.");
         alert.showAndWait();
     }
     /**

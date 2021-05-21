@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package app.Models;
 
 import TSPModel_PtiDeb.TSPModel_PtiDeb;
 import java.util.Observer;
 import javafx.concurrent.Task;
 
-/**
- *
- * @author yanis
- */
 public class TaskTSP extends Task<Void> {
     
     Observer obs;

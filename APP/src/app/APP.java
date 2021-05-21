@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package app;
 
 import app.Models.Toolbox;
@@ -18,10 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-/**
- *
- * @author yanis
- */
+
 public class APP extends Application {
     
     public static Scene scene;
@@ -46,11 +39,9 @@ public class APP extends Application {
         System.setProperty("org.graphstream.ui", "javafx");
         
         Parent root = FXMLLoader.load(getClass().getResource("Vues/Home.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("Vues/Game.fxml"));
         
         scene = new Scene(root);
         APP.stage = stage;
-//        APP.stage.getIcons().add(new Image("Vues/Icons/graph.png"));
         APP.stage.getIcons().add(new Image(APP.class.getResourceAsStream("Vues/Icons/graph.png")));
         APP.stage.setTitle("Voyageur de commerce");
 
@@ -95,8 +86,6 @@ public class APP extends Application {
     public static void keepAspectRatio1TO1() {
         
         try {
-
-            System.out.println("Keep Aspect Ratio 1/1 Start");
                    
             Screen smallestScreen = Screen.getPrimary();
             Double smallestHeight = smallestScreen == null ? 768 : smallestScreen.getBounds().getHeight() * 0.85;
@@ -136,8 +125,6 @@ public class APP extends Application {
                     lockHeight = false;
            });
                    
-            System.out.println("Keep Aspect Ratio End");
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -146,8 +133,6 @@ public class APP extends Application {
     public static void keepAspectRatio16TO9() {
         
         try {
-
-            System.out.println("Keep Aspect Ratio 16/9 Start");
             
             APP.clearAspectRatio();
                    
@@ -180,8 +165,6 @@ public class APP extends Application {
 
                     lockHeight = false;
            });
-
-            System.out.println("Keep Aspect Ratio End");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

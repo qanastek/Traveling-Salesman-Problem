@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package app.Vues;
 
 import app.APP;
@@ -30,11 +26,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 
-/**
- * FXML Controller class
- *
- * @author yanis
- */
+
 public class MapDesignerController implements Initializable {
 
     @FXML
@@ -49,24 +41,13 @@ public class MapDesignerController implements Initializable {
     @FXML
     private GridPane grid;
     
-//    private HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-//
-//        ap.heightProperty().addListener(new ChangeListener<Object>() {
-//                @Override
-//                public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
-//                }			
-//        });
 
         Toolbox.setMode(ap);
-
-//        APP.keepAspectRatio1TO1();
         // Add Columns
         for (int i = 0; i < Toolbox.DEFAULT_SIZE; i++) {            
             ColumnConstraints cc = new ColumnConstraints();
@@ -96,9 +77,7 @@ public class MapDesignerController implements Initializable {
 
                     @Override
                     public void handle(Event event) {
-                        
-                        System.out.println(getText());
-                        
+                                                
                         String nodeId = "" + x + y;
 
                         // add point
@@ -117,9 +96,6 @@ public class MapDesignerController implements Initializable {
 
                             Toolbox.points.remove(nodeId);
                         }
-                        
-//                        System.out.println("###########-- points ---");
-//                        System.out.println(Toolbox.points.values());
                     }
                 });
                 
@@ -148,11 +124,6 @@ public class MapDesignerController implements Initializable {
         
         // Save in the csv file
         ArrayList<NodeCoordinates> values = new ArrayList(Toolbox.getNodes());
-//        Toolbox.save(values);
-                
-//        System.out.println("-------------------------------------------");
-//        System.out.println(getClass().getResource("Game.fxml"));
-//        System.out.println("-------------------------------------------");
         
         try {
             
@@ -172,9 +143,7 @@ public class MapDesignerController implements Initializable {
     private void back(){ 
         
         // Delete Items
-        deleteAll();  
-        
-        System.out.println("back");
+        deleteAll();          
                 
         try {
             
@@ -192,8 +161,6 @@ public class MapDesignerController implements Initializable {
         
     @FXML
     private void deleteAll(){
-        
-        System.out.println("------- DELETED -------");
         
         // Clear the HashMap
         Toolbox.points.clear();

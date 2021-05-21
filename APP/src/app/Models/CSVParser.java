@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app.Models;
 
 import java.io.BufferedReader;
@@ -12,10 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- *
- * @author yanis
- */
 public class CSVParser {
     
     public static ArrayList<NodeCoordinates> readFile(String path, String sep) {
@@ -56,8 +47,6 @@ public class CSVParser {
     }
     
     public static void writeFile(ArrayList<NodeCoordinates> items, String path, String sep) {
-        
-        System.out.println("----------------------------------------------------------------------------------------------------------------- " + path);
         
         try {
             

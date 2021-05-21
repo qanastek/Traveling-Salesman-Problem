@@ -42,16 +42,11 @@ public class LoadMapController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        APP.keepAspectRatio1TO1();
-
         Toolbox.setMode(ap);
-
-        //##
         // pupulate map list
         populateMapList();        
     }
 
-    //##
     /**
      * populate map list
      */
@@ -87,7 +82,6 @@ public class LoadMapController implements Initializable {
                 btn.setPrefWidth(450);
                 btn.setPrefHeight(100);
                 btn.getStyleClass().add("buttonColor");
-                // btn.setStyle("-fx-text-fill: #fd9294; -fx-font: 19 System; -fx-font-weight: bold");
                 btn.getStyleClass().add("load-a-map-btn");
 
                 btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -108,7 +102,6 @@ public class LoadMapController implements Initializable {
         }
     }
 
-    //##
     private ContextMenu newContextMenu(String mapName)
     {
         ContextMenu contextMenu = new ContextMenu();
@@ -116,7 +109,7 @@ public class LoadMapController implements Initializable {
         menuItemDelete.setOnAction(new EventHandler<ActionEvent>() {
             @Override 
             public void handle(ActionEvent e) {
-                if( Toolbox.confirm("DELETE", "You are about to delte : " + Toolbox.getMapTitleByFileName(mapName) ))
+                if( Toolbox.confirm("DELETE", "You are about to delete : " + Toolbox.getMapTitleByFileName(mapName) ))
                 {
                     CSVParser.removeFile(mapName);
                     populateMapList(); 
@@ -141,23 +134,21 @@ public class LoadMapController implements Initializable {
 
     @FXML
     void loadFrance(ActionEvent event) {
-        //##
+        
         Toolbox.setNodes( CSVParser.readFile(Toolbox.FRANCE_PATH, ",") );
         Toolbox.loadedFile = "France";
         Toolbox.demo = true;
         showGame();       
     }
-    //##
+    
     @FXML
-    void loadItalie(ActionEvent event) {
-        System.out.println("italie");        
+    void loadItalie(ActionEvent event) {    
         Toolbox.setNodes( CSVParser.readFile(Toolbox.ITALIE_PATH, ",") );
         Toolbox.loadedFile = "Italie";
         Toolbox.demo = true;
         showGame();
     }
 
-    //##
     /**
      * show game interface
      */
@@ -179,9 +170,7 @@ public class LoadMapController implements Initializable {
 
     @FXML
     void openExplorerMapsFolder(ActionEvent event) {
-        
-        System.out.println("loadFile");
-        
+
         File file = new File(Toolbox.PATH_MAPS);
         Desktop desktop = Desktop.getDesktop();
         try {
@@ -193,18 +182,14 @@ public class LoadMapController implements Initializable {
     
     @FXML
     void refresh(ActionEvent event) {
-        
-        System.out.println("refresh");
-        
+
         populateMapList();
     }
         
 
     @FXML
     void back(ActionEvent event) {
-        
-        System.out.println("back");
-                
+                        
         try {
             
             AnchorPane root = FXMLLoader.load(getClass().getResource("Home.fxml"));     
