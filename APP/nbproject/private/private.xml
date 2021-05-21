@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/APP.java</file>
             <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Models/Toolbox.java</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Models/CSVParser.java</file>
             <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/HomeController.java</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/LoadMapController.java</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/MapDesignerController.java</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Models/EdgeCoordinates.java</file>
             <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/stylesheet.css</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Models/TaskTSP.java</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/MapDesigner.fxml</file>
-            <file>jar:file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/lib/GraphStream%201.3/gs-core-1.3-sources.jar!/org/graphstream/ui/swingViewer/ViewPanel.java</file>
             <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/GameController.java</file>
-            <file>file:/C:/Users/yanis/Desktop/Cours/Master/M1/S2/Interface%20Graphique/TPs/TP2/APP/src/app/Vues/LoadMap.fxml</file>
         </group>
     </open-files>
 </project-private>

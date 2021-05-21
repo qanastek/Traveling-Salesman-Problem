@@ -57,7 +57,7 @@
                         <Insets />
                      </HBox.margin>
                   </AnchorPane>
-                  <VBox minHeight="190.0" minWidth="300.0" prefHeight="720.0" prefWidth="300.0" styleClass="backgroundColorDark" HBox.hgrow="NEVER">
+                  <VBox minHeight="190.0" minWidth="300.0" prefHeight="720.0" prefWidth="300.0" HBox.hgrow="NEVER">
                      <children>
                         <GridPane vgap="10.0">
                           <columnConstraints>
@@ -182,7 +182,7 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Text>
-                              <Slider fx:id="sliderSpeed" blockIncrement="25.0" showTickMarks="true" snapToTicks="true" value="25.0" HBox.hgrow="ALWAYS" />
+                              <Slider fx:id="sliderSpeed" blockIncrement="25.0" showTickMarks="true" snapToTicks="true" styleClass="sliderCustom" value="25.0" HBox.hgrow="ALWAYS" />
                               <Text fill="#707070" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textColor" text="SLOW">
                                  <HBox.margin>
                                     <Insets left="10.0" />

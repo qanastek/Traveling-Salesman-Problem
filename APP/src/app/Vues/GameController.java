@@ -209,7 +209,6 @@ public class GameController implements Initializable, Observer {
                 System.out.println("****************** Paused true");
                 setPaused();
                 getTsp().setPause(true);
-                this.getTsp().notifyObservers(this);
             }            
         }
         else {
@@ -226,8 +225,12 @@ public class GameController implements Initializable, Observer {
             
             if(tspThread != null && tspThread.isAlive()) {
                 System.out.println("-------------------------- isAlive");
+                
+                synchronized(getTsp()){
+                    getTsp().notify();
+                }
+                
                 getTsp().setPause(false);
-                this.getTsp().notifyObservers(this);
             }
             else {
                 
@@ -546,6 +549,7 @@ public class GameController implements Initializable, Observer {
                 String.valueOf(from),
                 String.valueOf(to)
             );
+            e.setAttribute("ui.style", BASE + "size: 2px;");
             
 //            graph.setAttribute("ui.stylesheet", "edge { z-index: 0; fill-color: rgb(144, 148, 138); size: 3px; arrow-shape: arrow;}");
 

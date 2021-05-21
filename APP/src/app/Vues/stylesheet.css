@@ -227,3 +227,39 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-font-weight: bold;
     -fx-font: 19 System; 
 }
+
+/*------------------- Checkbox Sun/Moon -------------------*/
+.darkmodeCheckbox>.box {
+  -fx-background-insets: 0;
+  -fx-background-radius: 0;
+  -fx-background-color: transparent;
+}
+
+.darkmodeCheckbox>.box>.mark {
+    /*unmarked*/
+  -fx-background-color: transparent;
+  -fx-background-image: url("Icons/moon.png");
+  -fx-background-position: center;
+  -fx-background-size: cover;
+  -fx-background-repeat: stretch;
+  -fx-scale-x: 3.0;
+  -fx-scale-y: 3.0;
+  -fx-shape: none;
+}
+
+.darkmodeCheckbox:selected>.box>.mark{
+  -fx-background-color: transparent;  
+  -fx-background-image: url("Icons/sun.png");
+  -fx-background-position: center;
+  -fx-background-size: cover;
+  -fx-background-repeat: stretch;
+  -fx-scale-x: 3.0;
+  -fx-scale-y: 3.0;
+  -fx-shape: none;
+}
+
+.sliderCustom {
+    -fx-background-color:transparent;
+    -fx-control-inner-background: #D1BFEA!important;
+}
+.sliderCustom:thumb{-fx-background-color: #1354cb!important;}

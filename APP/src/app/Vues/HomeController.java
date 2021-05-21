@@ -39,6 +39,8 @@ public class HomeController implements Initializable {
 //        APP.keepAspectRatio1TO1();
 
         Toolbox.setMode(ap);
+        
+        darkMode.setSelected(Toolbox.darkMode);            
     }    
     
     @FXML

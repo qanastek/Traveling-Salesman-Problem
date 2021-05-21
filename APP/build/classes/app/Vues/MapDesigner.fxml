@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -18,27 +19,28 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label maxWidth="1.7976931348623157E308" styleClass="textColor" text="Map Designer" textFill="#8b8b8b" HBox.hgrow="ALWAYS">
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" styleClass="buttonBack" textFill="#9467d3" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Icons/back_white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="textColor" text="Map Designer" textAlignment="CENTER" textFill="#8b8b8b" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" styleClass="buttonColor" text="&lt; BACK" textFill="#8c949e" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="deleteBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAll" styleClass="buttonDelete" text="DELETE ALL" wrapText="true">
+                  <Button fx:id="deleteBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAll" prefWidth="110.0" styleClass="buttonDelete" text="DELETE ALL" wrapText="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="saveBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" styleClass="buttonStart" text="START" textFill="#85b67a" wrapText="true">
+                  <Button fx:id="saveBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" prefWidth="110.0" styleClass="buttonStart" text="GO" textFill="#85b67a" wrapText="true">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
