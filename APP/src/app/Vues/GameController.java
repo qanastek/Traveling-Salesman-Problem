@@ -199,46 +199,49 @@ public class GameController implements Initializable, Observer {
     
     @FXML
     private void toggleStart() {
-        
+
         System.out.println("-------------------------- start");
-        
+
         // If is currently running
+        // Pause
         if(status.getText().equals(Toolbox.RUNNING)) {
 
             if(tsp != null) {
-                System.out.println("****************** Paused true");
+                System.out.println("** Paused true");
                 setPaused();
                 getTsp().setPause(true);
-            }            
+            }
         }
+        // RESTART
+        else if(status.getText().equals(Toolbox.STOPPED)){
+            restart();
+        }
+        // START
         else {
-            
-//            tspThread = null;
-            
+
             // Set running view
             setRunning();
-            
+
             // Start
             System.out.println("-------------------------- test new");
 //            csvParser();
             // Toolbox.save(nodes);
-            
+
             if(tspThread != null && tspThread.isAlive()) {
                 System.out.println("-------------------------- isAlive");
-                
+
                 synchronized(getTsp()){
                     getTsp().notify();
                 }
-                
+
                 getTsp().setPause(false);
             }
             else {
-                
+
                 System.out.println("-------------------------- is not alive");
-                runTSP(Toolbox.getNodes());         
-                
+                runTSP(Toolbox.getNodes());
+
             }
-            
         }
     }
     
@@ -273,12 +276,14 @@ public class GameController implements Initializable, Observer {
     
     @FXML
     private void restart() {
-        System.out.println("-------------------------- restart");
+        System.out.println("##-------------------------- restart");
         Toolbox.departureDate = ZonedDateTime.now();
         clearPath();
-        setStopped();
-        tspThread.stop();
-        toggleStart();
+        setRunning();
+        generateEdges();
+        renderGraph();
+        tsp = new TaskTSP(this);
+        runTSP(Toolbox.getNodes());
     }
     
     @FXML
