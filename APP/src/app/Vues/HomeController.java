@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -26,14 +27,26 @@ public class HomeController implements Initializable {
     
     @FXML
     private AnchorPane ap;
+    
+    @FXML
+    private CheckBox darkMode;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        APP.keepAspectRatio1TO1();
+//        APP.keepAspectRatio1TO1();
+
+        Toolbox.setMode(ap);
     }    
+    
+    @FXML
+    private void setDarkMode()
+    {
+        Toolbox.darkMode = darkMode.isSelected();
+        Toolbox.setMode(ap);
+    }
         
     @FXML
     private void openMapDesigner() {

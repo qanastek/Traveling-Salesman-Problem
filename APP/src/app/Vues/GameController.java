@@ -107,6 +107,8 @@ public class GameController implements Initializable, Observer {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        Toolbox.setMode(root);
         
         generateEdges();
         renderGraph();
@@ -129,7 +131,7 @@ public class GameController implements Initializable, Observer {
         mapTitle.setDisable(Toolbox.demo);
         saveBtn.setVisible(!Toolbox.demo);
         
-        APP.keepAspectRatio1TO1();
+//        APP.keepAspectRatio1TO1();
 //        APP.keepAspectRatio16TO9();
     }
     
@@ -295,6 +297,22 @@ public class GameController implements Initializable, Observer {
     }
     
     @FXML
+    private void back() {
+        System.out.println("-------------------------- editMap");
+        try {
+            AnchorPane ap = FXMLLoader.load(getClass().getResource("MapDesigner.fxml"));
+            root.setTopAnchor(ap,0.0);
+            root.setBottomAnchor(ap,0.0);
+            root.setLeftAnchor(ap,0.0);
+            root.setRightAnchor(ap,0.0);
+            root.getChildren().setAll(ap);
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(MapDesignerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
     private void editMap() {
         System.out.println("-------------------------- editMap");
         try {
@@ -354,30 +372,26 @@ public class GameController implements Initializable, Observer {
     
     // Generate a complete graph
     private void generateEdges() {
-        
+
         int from;
         int to;
-        
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~NODES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println(Toolbox.getNodes());
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        
+        ArrayList<NodeCoordinates> nodes = Toolbox.getNodes();
         // For each node
-        for (NodeCoordinates f : Toolbox.getNodes()) {
-            
-            from = f.getIdentifier();            
-            
+        for (int i=0; i<nodes.size(); i++) {
+
+            // from = f.getIdentifier();
+            from = nodes.get(i).getIdentifier();
+
             // Connect it with all of this neighboors
-            for (NodeCoordinates t : Toolbox.getNodes()) {
-                
-                to = t.getIdentifier();
-                
-                if(from == to) continue;
-                
-                System.out.println("from: " + from);
-                System.out.println("to: " + to);
-                System.out.println("Toolbox: " + Toolbox.fromTo(from,to));
-                                
+            for (int j=i; j<nodes.size(); j++) {
+
+                to = nodes.get(j).getIdentifier();
+
+                String id = String.valueOf(from)+"--"+String.valueOf(to);
+
+                if(from == to)
+                    continue;
+
                 // Add tp the edges array
                 this.edges.add(new EdgeCoordinates(
                     Toolbox.fromTo(from,to),
@@ -386,11 +400,6 @@ public class GameController implements Initializable, Observer {
                 ));
             }
         }
-        
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~EDGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println(this.edges);
-        System.out.println(this.edges.size());
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
     
     // Load the data in the TSP model

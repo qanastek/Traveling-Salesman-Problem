@@ -79,6 +79,60 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-effect: dropshadow(three-pass-box, #FBE44D, 10, 0, 0, 0);
 }
 
+.buttonBack {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill: #9467D3;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+/*    -fx-border-width: 2px;
+    -fx-border-color: #9467D3;*/
+}
+.buttonBack:hover {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill: #9467D3;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+/*    -fx-border-width: 2px;
+    -fx-border-color: #9467D3;*/
+    -fx-effect: dropshadow(three-pass-box, #9467D3, 10, 0, 0, 0);
+}
+
+.buttonDelete{
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill:  #A00000;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color:  #A00000;
+}
+.buttonDelete:hover {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill: #A00000;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color:  #A00000;
+    -fx-effect: dropshadow(three-pass-box, #A00000, 3, 0, 0, 0);
+}
+
+.buttonStart{
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill: #85B67A;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color:   #85B67A;
+}
+.buttonStart:hover {
+    /*-fx-font-family: 'AlloyInk';*/
+    -fx-text-fill:  #85B67A;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color:   #85B67A;
+    -fx-effect: dropshadow(three-pass-box,  #85B67A, 10, 0, 0, 0);
+}
+
 .btnOutlined {
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -125,6 +179,12 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-border-width: 2px;
 }
 
+.demoText {
+    -fx-font-weight: bold;
+    -fx-fill: #FBFAFC;    
+    -fx-text-fill: #FBFAFC;        
+}
+
 
 /*
 ---------------- MAP LOADING ------------------ 
@@ -151,4 +211,19 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-text-inner-color: #ed1fbd; 
     -fx-font: 19 System; 
     -fx-font-weight: bold;
+}
+
+.backgroundColorDark {
+    /*-fx-background-color: #613B93;*/
+    /* -fx-background-color: linear-gradient(to top, #7950AC, #9769D7); */
+
+    -fx-background-image: url("Icons/background2.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.dark-mode-text{
+    -fx-font-weight: bold;
+    -fx-font: 19 System; 
 }

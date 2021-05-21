@@ -31,14 +31,14 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="deleteBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAll" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #a73c40;" text="DELETE ALL" textFill="#a83d40" wrapText="true">
+                  <Button fx:id="deleteBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAll" styleClass="buttonDelete" text="DELETE ALL" wrapText="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="saveBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" style="-fx-background-color: transparent; -fx-border-radius: 10px; -fx-border-width: 1px; -fx-border-color: #85B67A;" text="START" textFill="#85b67a" wrapText="true">
+                  <Button fx:id="saveBtn" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" styleClass="buttonStart" text="START" textFill="#85b67a" wrapText="true">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

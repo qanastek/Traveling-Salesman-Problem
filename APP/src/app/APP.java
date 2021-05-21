@@ -7,12 +7,16 @@ package app;
 
 import app.Models.Toolbox;
 import java.io.File;
+import java.util.Observable;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 /**
  *
@@ -94,9 +98,16 @@ public class APP extends Application {
 
             System.out.println("Keep Aspect Ratio 1/1 Start");
                    
+            Screen smallestScreen = Screen.getPrimary();
+            Double smallestHeight = smallestScreen == null ? 768 : smallestScreen.getBounds().getHeight() * 0.85;
+            Double minHeight = smallestScreen == null ? 768 : smallestScreen.getBounds().getHeight() * 0.65;
+            
             APP.clearAspectRatio();
-            APP.stage.setWidth(768);
-            APP.stage.setHeight(768);
+            APP.stage.setWidth(smallestHeight);
+            APP.stage.setHeight(smallestHeight);
+            
+            APP.stage.setMinWidth(minHeight);
+            APP.stage.setMinHeight(minHeight);
             
             APP.stage.widthProperty().addListener((obs, oldVal, newVal) -> {
 

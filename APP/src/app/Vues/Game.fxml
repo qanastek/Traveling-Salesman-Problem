@@ -27,10 +27,27 @@
             <AnchorPane maxWidth="1.7976931348623157E308">
 
               <children>
-                 <TextField fx:id="mapTitle" alignment="CENTER" maxWidth="1.7976931348623157E308" promptText="unnamed map" style="-fx-text-inner-color: #e622b8; -fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <font>
-                       <Font name="System Bold" size="24.0" />
-                    </font></TextField>
+                  <HBox maxWidth="1.7976931348623157E308" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" styleClass="buttonBack" textFill="#9467d3" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="NEVER">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/back.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                       <TextField fx:id="mapTitle" alignment="CENTER" maxWidth="1.7976931348623157E308" promptText="unnamed map" style="-fx-text-inner-color: #e622b8; -fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
+                          <font>
+                             <Font name="System Bold" size="24.0" />
+                          </font>
+                        </TextField>
+                     </children>
+                  </HBox>
               </children>
             </AnchorPane>
             <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">

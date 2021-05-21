@@ -64,7 +64,9 @@ public class MapDesignerController implements Initializable {
 //                }			
 //        });
 
-        APP.keepAspectRatio1TO1();
+        Toolbox.setMode(ap);
+
+//        APP.keepAspectRatio1TO1();
         // Add Columns
         for (int i = 0; i < Toolbox.DEFAULT_SIZE; i++) {            
             ColumnConstraints cc = new ColumnConstraints();

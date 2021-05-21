@@ -46,5 +46,14 @@
             </HBox>
          </children>
       </VBox>
+      <HBox layoutX="10.0" layoutY="10.0">
+         <children>
+            <CheckBox fx:id="darkMode" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#setDarkMode" styleClass="dark-mode-text" textFill="#ebe7e7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 import javax.swing.filechooser.FileSystemView;
 
 /**
@@ -60,10 +61,13 @@ public class Toolbox {
     public static ZonedDateTime departureDate;
     public static ZonedDateTime arrivalDate;
     
+    public static boolean darkMode = false;
+    
     public static HashMap<String,NodeCoordinates> points = new HashMap<String,NodeCoordinates>();
     
     public static String fromTo(int from, int to) {
         return "" + from + "-" +  to;
+//        return "" + from + "-" +  to;
 //        return String.valueOf(from) + "-" + String.valueOf(to);
     }    
     
@@ -169,4 +173,14 @@ public class Toolbox {
         Optional<ButtonType> result = alert.showAndWait();
         return ( result.get() == ButtonType.OK );
     }    
+    
+    public static void setMode(AnchorPane ap){
+        
+        ap.getStyleClass().clear();
+        
+        if(darkMode)
+            ap.getStyleClass().add("backgroundColorDark");
+        else
+            ap.getStyleClass().add("backgroundColor");
+    }
 }

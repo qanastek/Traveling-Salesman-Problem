@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -24,7 +25,7 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textColor" text="LOAD A MAP" textAlignment="CENTER" textOrigin="CENTER" HBox.hgrow="ALWAYS">
                      <font>
-                        <Font name="System Bold" size="34.0" />
+                        <Font name="System Bold" size="45.0" />
                      </font>
                   </Text>
                </children>
@@ -40,26 +41,79 @@
             </HBox>
             <HBox spacing="20.0" VBox.vgrow="NEVER">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFrance" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" text="FRANCE" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFrance" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
+                     <graphic>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/france.png" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="demoText" text="FRANCE" />
+                           </children>
+                        </VBox>
+                     </graphic>
                   </Button>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadItalie" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" text="ITALIE" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadItalie" prefHeight="170.0" prefWidth="600.0" styleClass="buttonColor" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
+                     <graphic>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/italy-country.png" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="demoText" text="ITALY" />
+                           </children>
+                        </VBox>
+                     </graphic>
                   </Button>
                </children>
             </HBox>
-            <HBox>
+            <HBox maxWidth="1.7976931348623157E308">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textColor" text="MY MAPS" textAlignment="CENTER" textOrigin="CENTER">
-                     <font>
-                        <Font name="System Bold" size="34.0" />
-                     </font>
-                  </Text>
+                  <GridPane maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#refresh" styleClass="buttonColor" textFill="#fd9294" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" HBox.hgrow="NEVER">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Icons/refresh.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textColor" text="MY MAPS" textAlignment="CENTER" textOrigin="CENTER" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="34.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </GridPane>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
             </HBox>
             <AnchorPane maxWidth="1.7976931348623157E308">
                <children>
@@ -75,17 +129,24 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <Button alignment="CENTER" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openExplorerMapsFolder" prefHeight="55.0" prefWidth="199.0" styleClass="buttonColor" text="OPEN SAVE FOLDER" textFill="#fd9294">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-            </Button>
+            <HBox maxWidth="1.7976931348623157E308">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openExplorerMapsFolder" prefHeight="55.0" styleClass="buttonColor" text="OPEN SAVE FOLDER" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
             <HBox spacing="20.0">
                <children>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="buttonColor" text="&lt; BACK" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" />
+                     </HBox.margin>
                   </Button>
                </children>
             </HBox>

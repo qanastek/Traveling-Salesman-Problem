@@ -42,7 +42,9 @@ public class LoadMapController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        APP.keepAspectRatio1TO1();
+//        APP.keepAspectRatio1TO1();
+
+        Toolbox.setMode(ap);
 
         //##
         // pupulate map list
@@ -188,6 +190,15 @@ public class LoadMapController implements Initializable {
             Logger.getLogger(LoadMapController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @FXML
+    void refresh(ActionEvent event) {
+        
+        System.out.println("refresh");
+        
+        populateMapList();
+    }
+        
 
     @FXML
     void back(ActionEvent event) {
