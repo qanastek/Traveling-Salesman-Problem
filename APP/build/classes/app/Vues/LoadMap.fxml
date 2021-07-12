@@ -131,7 +131,7 @@
             </AnchorPane>
             <HBox maxWidth="1.7976931348623157E308">
                <children>
-                  <Button alignment="CENTER" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openExplorerMapsFolder" prefHeight="55.0" styleClass="buttonColor" text="OPEN SAVE FOLDER" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openExplorerMapsFolder" prefHeight="55.0" styleClass="buttonColor" text="OPEN SAVE FOLDER" textAlignment="CENTER" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -140,13 +140,10 @@
             </HBox>
             <HBox spacing="20.0">
                <children>
-                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="buttonColor" text="&lt; BACK" textFill="#fd9294" HBox.hgrow="ALWAYS">
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefHeight="85.0" prefWidth="600.0" styleClass="buttonColor" text="&lt; BACK" textAlignment="CENTER" textFill="#fd9294" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets bottom="5.0" />
-                     </HBox.margin>
                   </Button>
                </children>
             </HBox>

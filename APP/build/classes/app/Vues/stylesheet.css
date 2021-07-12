@@ -11,8 +11,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: cover;
-/*    -fx-width: 200px; 
-    -fx-height: 200px;*/
 }
 
 .background_tile_filled {
@@ -20,8 +18,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: cover;
-/*    -fx-width: 200px; 
-    -fx-height: 200px;*/
 }
 
 .FINISHED_COLOR {
@@ -41,13 +37,10 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 
 .backgroundColor {
-    /*#6942A0*/
-    /*-fx-background-color: linear-gradient(to top, white, #6942A0);*/
     -fx-background-color: linear-gradient(to top, #7950AC, #9769D7);
 }
 
 .backgroundColorDark {
-    /*-fx-background-color: #613B93;*/
     -fx-background-color: linear-gradient(to top, #7950AC, #9769D7);
 }
 
@@ -62,7 +55,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 
 .buttonColor {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill: #FBFAFC;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -70,7 +62,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-border-color: #FBFAFC;
 }
 .buttonColor:hover {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill: #FBE44D;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -80,25 +71,18 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 
 .buttonBack {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill: #9467D3;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
-/*    -fx-border-width: 2px;
-    -fx-border-color: #9467D3;*/
 }
 .buttonBack:hover {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill: #9467D3;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
-/*    -fx-border-width: 2px;
-    -fx-border-color: #9467D3;*/
     -fx-effect: dropshadow(three-pass-box, #9467D3, 10, 0, 0, 0);
 }
 
 .buttonDelete{
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill:  #A00000;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -106,7 +90,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-border-color:  #A00000;
 }
 .buttonDelete:hover {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill: #A00000;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -116,7 +99,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 
 .buttonStart{
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill: #85B67A;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -124,7 +106,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-border-color:   #85B67A;
 }
 .buttonStart:hover {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill:  #85B67A;
     -fx-background-color: transparent;
     -fx-border-radius: 10px;
@@ -144,39 +125,67 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 
 .startBtn {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill:  #85B67A;
     -fx-border-color:  #85B67A;
     -fx-background-color: transparent;
     -fx-border-radius: 25px;
     -fx-border-width: 2px;
 }
+.startBtn:hover {
+    -fx-text-fill:  #85B67A;
+    -fx-border-color:   #85B67A;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box,  #85B67A, 10, 0, 0, 0);
+}
 
 .stopBtn {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill:  #EA5255;
     -fx-border-color:  #EA5255;
     -fx-background-color: transparent;
     -fx-border-radius: 25px;
     -fx-border-width: 2px;
 }
+.stopBtn:hover {
+    -fx-text-fill:  #EA5255;
+    -fx-border-color:   #EA5255;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box,  #EA5255, 10, 0, 0, 0);
+}
 
 .restartBtn {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill:  #D7C229;
     -fx-border-color:  #D7C229;
     -fx-background-color: transparent;
     -fx-border-radius: 25px;
     -fx-border-width: 2px;
 }
+.restartBtn:hover {
+    -fx-text-fill:  #D7C229;
+    -fx-border-color:   #D7C229;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box,  #D7C229, 10, 0, 0, 0);
+}
 
 .saveBtn {
-    /*-fx-font-family: 'AlloyInk';*/
     -fx-text-fill:  #3E9FE0;
     -fx-border-color:  #3E9FE0;
     -fx-background-color: transparent;
     -fx-border-radius: 25px;
     -fx-border-width: 2px;
+}
+.saveBtn:hover {
+    -fx-text-fill:  #3E9FE0;
+    -fx-border-color:   #3E9FE0;
+    -fx-background-color: transparent;
+    -fx-border-radius: 25px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box,  #3E9FE0, 10, 0, 0, 0);
 }
 
 .demoText {
@@ -191,20 +200,14 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 */
 
 .load-a-map-btn-wrapper:hover .load-a-map-btn{
-    /* -fx-background-color: blue;
-    -fx-border-width: 2px;
-    -fx-border-radius: 10px; */
-    /* -fx-cursor: pointer; */
-    /* -fx-text-fill: black;  */
+    
 }
 .load-a-map-btn{
     -fx-fill: #fd9294; 
     -fx-font: 19 System; 
     -fx-font-weight: bold;
 }
-/*.load-a-map-btn:hover{
-    -fx-text-fill: #ed1fbd;
-}*/
+
 .empty-map-text{
     -fx-text-fill: #ed1fbd; 
     -fx-fill: #fd9294;
@@ -214,9 +217,6 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
 }
 
 .backgroundColorDark {
-    /*-fx-background-color: #613B93;*/
-    /* -fx-background-color: linear-gradient(to top, #7950AC, #9769D7); */
-
     -fx-background-image: url("Icons/background2.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
@@ -262,4 +262,12 @@ node { fill-mode: image-scaled; fill-image: url('https://img.icons8.com/bubbles/
     -fx-background-color:transparent;
     -fx-control-inner-background: #D1BFEA!important;
 }
-.sliderCustom:thumb{-fx-background-color: #1354cb!important;}
+.sliderCustom:thumb{
+    -fx-background-color: #1354cb!important;
+}
+
+.DELETE_MODAL {
+    -fx-background-color: white;
+    -fx-fill: black;
+    -fx-focused-text-base-color: black;
+}
