@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/qanastek/Traveling-Salesman-Problem/blob/main/assets/logo.png" width="60%">
+  <img src="https://github.com/qanastek/Traveling-Salesman-Problem/blob/main/assets/logo.png" width="20%">
 </p>
 
 This software is an easy to use traveling salesman problem interface which allow you to demonstrate to childrens how the Dijkstra algorithm works.
