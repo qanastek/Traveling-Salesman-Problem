@@ -16,6 +16,6 @@ This software is an easy to use traveling salesman problem interface which allow
 
 ## Run the project
 
-- Start the Rails server first
+- Start the project
   - `tar -zxvf jar.tar`
   - `java -jar APP.jar`
